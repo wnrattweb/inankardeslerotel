@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+	<Document>
+		<name>Locations for Inan Kardesler Hotel</name>
+		<atom:author>
+			<atom:name>Murat Ulusoy</atom:name>
+		</atom:author>
+		<atom:link rel="related" href="https://inankardeslerotel.com" />
+		<Folder>
+			<Placemark>
+				<name><![CDATA[Inan Kardesler Hotel]]></name>
+				<address><![CDATA[Uzungol Mah. No:25/A, Trabzon, 61960, Turkey]]></address>
+				<phoneNumber><![CDATA[ 00904626566260]]></phoneNumber>
+				<description><![CDATA[Uzungol Inan Kardesler Hotel]]></description>
+				<Point>
+					<coordinates>40.3038378,40.6187162,0</coordinates>
+				</Point>
+			</Placemark>
+		</Folder>
+	</Document>
+</kml>

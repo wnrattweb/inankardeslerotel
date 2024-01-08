@@ -1,0 +1,57 @@
+html #hweb-search-panel.hweb-sbox-300x250 .hweb-hotel-hide .hweb-search-button {
+    margin: 25px 0 25px;
+}
+html #hweb-search-panel.hweb-sbox-300x250 .hweb-from.hweb-col {
+width: 100%;
+}
+html #hweb-search-panel.hweb-sbox-300x250 .hweb-login {
+bottom: 15px;
+    left: 0;
+    width: 100%;
+}
+html #hweb-search-panel.hweb-sbox-300x250 .hweb-hotel-hide .hweb-col {
+    margin-top: 10px;
+}
+html body #hweb-search-panel.hweb-sbox-300x250 .hweb-button {
+    width: 100%;
+border: 1px solid #b19459;
+    border-radius: 0;
+}
+html .ui-datepicker, html .ui-autocomplete {
+    font-size: 11px;
+}
+#hweb-search-panel .radioDirections .ui-state-default.ui-state-active {
+    border: 1px solid #b19459;
+}
+
+/**/
+ html #hweb-search-panel { 
+background:#420800;
+background:rgba(66,8,0,0.7) !important; 
+height:300px !important;
+}
+html div#hweb-search-panel.hweb-sbox-300x250{
+height:300px !important;
+}
+
+
+html #hweb-search-panel.hweb-sbox-300x250 .hweb-phone-show.hweb-hotel-hide .hweb-col {
+    margin-top: 8px;
+}
+
+html #hweb-search-panel.hweb-sbox-300x250 .hweb-phone-show.hweb-hotel-hide .hweb-search-button {
+    margin: 15px 0 20px;
+}
+
+html #hweb-search-panel.hweb-sbox-300x250 .hweb-phone-show .hweb-login {
+    bottom: 45px;
+}
+
+html #hweb-search-panel.hweb-sbox-300x250 .hweb-phone-show .hweb-phone {
+    bottom: 10px;
+}
+html #hweb-search-panel .hweb-phone {
+    font-size: 15px;
+    padding: 5px 2px;
+}
+ /***/

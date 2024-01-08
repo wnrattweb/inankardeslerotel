@@ -1,0 +1,1149 @@
+
+/*** WIDGET SEARCH BOX ***/
+#hweb-search-panel * {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box; 
+}
+.hweb-title{
+	font-size:14px;
+	padding:8px;
+}
+#hweb-search-panel{
+	border-radius:3px;
+	position:relative;
+	font-family:arial, helvetica, sans-serif;
+	font-size:12px;
+	text-align:left;
+}
+#hweb-search-panel .hweb-sbox-inner{
+	overflow:hidden;
+	padding:5px;
+}
+#hweb-search-panel .hweb-sbox-inner:before, 
+#hweb-search-panel .hweb-sbox-inner:after {
+    content: " ";
+    display: table;
+}
+#hweb-search-panel .hweb-sbox-inner:after {
+    clear: both;
+}
+#hweb-search-panel .hweb-col{
+	float:left;
+}
+.hweb-title-show.hweb-title,
+.hweb-promo-show .hweb-promo{
+	display:block;
+}
+.hweb-promo{
+	font-size:14px;
+	padding:5px;
+	text-align:center;
+	display:none;
+}
+#hweb-search-panel label{
+	margin:5px 0 2px;
+	padding:0;
+	display:block;
+	font-weight:bold;
+	font-size:11px;
+	width:100%;
+	overflow:hidden;
+	white-space:nowrap;
+	line-height:normal;
+}
+#hweb-search-panel input[type="text"],
+#hweb-search-panel select{
+	padding:4px;
+	width:100%;
+	height:26px;
+	font-size:12px;
+}
+#hweb-search-panel input,
+#hweb-search-panel select{
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;   
+}
+#hweb-search-panel .hweb-login{
+    margin:0 0 10px;
+    text-align: center;
+}
+#hweb-search-panel .hweb-login a{
+    padding:3px 10px;
+    text-decoration: none;
+    display: block;
+}
+#hweb-search-panel .radioDirections{
+	overflow:hidden;
+}
+#hweb-search-panel .radioDirections label{
+	width:50%;
+	float:left;
+	margin:0;
+}
+#hweb-search-panel .hweb-show-transfer .radioDirections label{
+	width:33%;
+	margin-right:1px;
+}
+#hweb-search-panel .radioDirections label .ui-button-text{
+	font-weight:normal;
+	padding:4px 0 0;
+}
+#hweb-search-panel .radioDirections .ui-state-default:hover,
+#hweb-search-panel .hweb-button:hover{
+	opacity:.8;
+	filter: alpha(opacity=80);
+}
+#hweb-search-panel .radioDirections .ui-state-default.ui-state.active:hover{
+	opacity:1;
+	filter: alpha(opacity=100);
+}
+#hweb-search-panel .radioDirections .ui-state-default{
+	height:25px;
+	line-height:24px;
+	font-size:11px;
+	border-radius:0;
+}
+#hweb-search-panel .hweb-guests{
+	display:none;
+}
+#hweb-search-panel .hweb-guests span{
+	float:left;
+	margin-left:2%;
+}
+#hweb-search-panel .hweb-button{
+    border-radius: 2px;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    line-height: 20px;
+    padding: 4px 12px;
+    text-align: center;
+    vertical-align: middle;
+	border:0;
+	width:auto;
+	-webkit-appearance: none;
+}
+
+#hweb-search-panel input, #hweb-search-panel .ui-buttonset{
+	margin:0;
+}
+#hweb-search-panel .hweb-checkbox{
+	margin:-2px 5px 0 0;
+}
+html .ui-datepicker, html .ui-autocomplete {
+    font-size: 12px;
+}
+html .ui-autocomplete {
+    max-width:90%;
+    max-height:50%;
+    overflow:auto;
+    border-radius:0;
+}
+html .ui-autocomplete.ui-menu .ui-menu-item{
+	border-radius:0;
+	border-bottom:1px solid #ddd;
+}
+html .ui-autocomplete.ui-menu .ui-menu-item:last-child{
+	border-bottom:0;
+}
+html .ui-autocomplete.ui-menu .ui-menu-item a{
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	max-width:100%;
+	overflow:hidden;
+	border-radius:0;
+}
+html .ui-autocomplete.ui-menu .ui-menu-item a:hover{
+	background:#eee;
+	border-color:#ccc;
+}
+#hweb-search-panel .hweb-disabled input[type="text"]{
+	background:#eee;
+	background:rgba(222,222,222,.5);
+	border:1px solid transparent;
+}
+
+.hweb-login, .hweb-direction, .hweb-location,
+.hweb-dates, .hweb-guests, .hweb-search-button{
+	float:left;
+	width:100%;
+}
+#hweb-search-panel .hweb-hotel-hide .hweb-to{
+	display:none;
+}
+
+#hweb-search-panel .hweb-icon{
+	display:none;
+}
+
+/*** DEFAULT COLOR ***/
+.hweb-promo{
+	background:#f3f3f3;
+	color:#555;
+}
+#hweb-search-panel{
+	background:transparent;
+	color:#333;
+}
+#hweb-search-panel label{
+	color:#004095;
+}
+#hweb-search-panel input[type="text"],
+#hweb-search-panel select{
+	border:1px solid #ccc;
+	background-color:#fff;
+}
+#hweb-search-panel .hasDatepicker{
+	background:url(/images/icon-calendar.png) no-repeat 95% center;
+}
+#hweb-search-panel .hweb-button{
+	background-color: #006DCC;
+	color:#fff;
+}
+#hweb-search-panel .radioDirections .ui-state-default{
+	background:#eee;
+	border:1px solid transparent;
+}
+#hweb-search-panel .radioDirections .ui-state-default:hover{
+	border:1px solid transparent;
+}
+#hweb-search-panel .radioDirections .ui-state-default.ui-state-active,
+#hweb-search-panel .radioDirections .ui-state-default.ui-state-active:hover{
+	background:#fff;
+}
+#hweb-search-panel .radioDirections label.ui-state-default.ui-state-active .ui-button-text,
+#hweb-search-panel .radioDirections label .ui-button-text{
+	color:inherit;
+}
+
+
+/*** 300x250 ***/
+
+#hweb-search-panel.hweb-sbox-300x250{
+	width:300px;
+}
+#hweb-search-panel.hweb-sbox-300x250 .hweb-sbox-inner{
+	height:250px;
+	padding:10px;
+}
+#hweb-search-panel.hweb-sbox-300x250 .hweb-show-transfer .radioDirections label{
+	width:32.5%;
+}
+#hweb-search-panel.hweb-sbox-300x250 .hweb-from.hweb-col,
+#hweb-search-panel.hweb-sbox-300x250 .hweb-dateFrom.hweb-col{
+	width:49%;
+	margin-right:1%;
+}
+#hweb-search-panel.hweb-sbox-300x250 .hweb-col{
+	width:50%;
+	margin-top:10px;
+}
+#hweb-search-panel.hweb-sbox-300x250 .hweb-promo-show.hweb-hotel-hide .hweb-col{
+	width:49%;
+	margin-top:5px;
+}
+#hweb-search-panel.hweb-sbox-300x250 .hweb-promo-show .hweb-location .hweb-col{
+	width:49%;
+	margin-top:5px;
+}
+
+#hweb-search-panel.hweb-sbox-300x250 .hweb-hotel-hide .hweb-location .hweb-col {
+    width: 99%;
+}
+#hweb-search-panel.hweb-sbox-300x250 .hweb-hotel-hide .hweb-col{
+	margin-top:20px;
+}
+#hweb-search-panel.hweb-sbox-300x250 .hweb-guests{
+	width:65%;
+}
+#hweb-search-panel.hweb-sbox-300x250 .hweb-guests select{
+	font-size:10px;
+	height:auto;
+	padding:3px 1px;
+}
+#hweb-search-panel.hweb-sbox-300x250 .hweb-roomSelectDiv{
+	width:21%;
+	margin-right:1%;
+}
+#hweb-search-panel.hweb-sbox-300x250 .hweb-passType{
+	width:78%;
+}
+
+#hweb-search-panel.hweb-sbox-300x250 .hweb-search-button{
+	float:right;
+	margin-top:10px;
+	text-align:right;
+}
+#hweb-search-panel.hweb-sbox-300x250 .hweb-hotel-hide .hweb-search-button{
+	margin-top:40px;
+}
+#hweb-search-panel.hweb-sbox-300x250 .hweb-promo-show.hweb-hotel-hide .hweb-search-button{
+	margin:10px 5px 0 0;
+}
+#hweb-search-panel.hweb-sbox-300x250 .hweb-login{
+	bottom: 20px;
+    display: inline-block;
+    left: 5px;
+    margin: 0;
+    position: absolute;
+    width: auto;
+}
+#hweb-search-panel.hweb-sbox-300x250 .hweb-promo{
+	margin: 0 0 10px;
+    padding: 20px;
+}
+#hweb-search-panel.hweb-sbox-300x250 .phoneLink{
+	display:block;
+}
+#hweb-search-panel.hweb-sbox-300x250 .hweb-phone-text{
+	font-size:13px;
+}
+#hweb-search-panel.hweb-sbox-300x250 .hweb-cc-num{
+	font-size:14px;
+}
+#hweb-search-panel.hweb-sbox-300x250 .hweb-phone{
+	padding:0px 5px 3px;
+}
+
+/*** 400x400 ***/
+
+#hweb-search-panel.hweb-sbox-400x400{
+	width:400px;
+}
+#hweb-search-panel.hweb-sbox-400x400 .hweb-sbox-inner{
+	height:400px;
+	padding:10px;
+}
+#hweb-search-panel.hweb-sbox-400x400 .hweb-title{
+	padding:10px;
+}
+#hweb-search-panel.hweb-sbox-400x400 .hweb-login{
+	bottom: 0;
+    left: 0;
+    margin: 0;
+    position: absolute;
+}
+#hweb-search-panel.hweb-sbox-400x400 .hweb-login a{
+    padding:10px;
+    width: 100%;
+    display:block;
+}
+#hweb-search-panel.hweb-sbox-400x400 .hweb-direction{
+	margin:5px 0;
+}
+#hweb-search-panel.hweb-sbox-400x400 .hweb-show-transfer .radioDirections label{
+	margin-right:1px !important;
+}
+#hweb-search-panel.hweb-sbox-400x400 .hweb-hotel-hide label{
+	margin:25px 0 5px
+}
+#hweb-search-panel.hweb-sbox-400x400 label{
+	margin:7px 0 5px
+}
+#hweb-search-panel.hweb-sbox-400x400 input[type="text"],
+#hweb-search-panel.hweb-sbox-400x400 select{
+	height:30px;
+	padding:5px;
+}
+#hweb-search-panel.hweb-sbox-400x400 .hweb-dateFrom{
+	width:49%;
+	margin-right:1%;
+}
+#hweb-search-panel.hweb-sbox-400x400 .hweb-dateTo{
+	width:50%;
+}
+#hweb-search-panel.hweb-sbox-400x400 .hweb-location .hweb-col {
+    width: 100%;
+}
+#hweb-search-panel.hweb-sbox-400x400 .hweb-guests{
+	width:65%;
+}
+#hweb-search-panel.hweb-sbox-400x400 .hweb-roomSelectDiv{
+	width:21%;
+	margin-right:1%;
+}
+#hweb-search-panel.hweb-sbox-400x400 .hweb-passType{
+	width:78%;
+}
+#hweb-search-panel.hweb-sbox-400x400 .hweb-guests span {
+    margin-left: 3%;
+}
+#hweb-search-panel.hweb-sbox-400x400 .hweb-search-button{
+	float:right;
+	margin-top:32px;
+	text-align:right;
+}
+#hweb-search-panel.hweb-sbox-400x400 .hweb-promo{
+	margin: 0;
+    padding: 30px 10px;
+}
+#hweb-search-panel.hweb-sbox-400x400 .phoneLink{
+	display:block;
+}
+#hweb-search-panel.hweb-sbox-400x400 .hweb-phone-text{
+	font-size:14px;
+}
+
+
+/*** 728x90 ***/
+
+#hweb-search-panel.hweb-sbox-728x90{
+	width:728px;
+}
+#hweb-search-panel.hweb-sbox-728x90 .hweb-sbox-inner{
+	height:90px;
+	padding:0;
+	font-size:10px;
+}
+#hweb-search-panel.hweb-sbox-728x90 .hweb-location label,
+#hweb-search-panel.hweb-sbox-728x90 .hweb-dates label{
+	font-size:10px;
+	margin:3px 0 0;
+}
+#hweb-search-panel.hweb-sbox-728x90 .hweb-sbox-inner .hweb-login{
+	display: inline-block;
+    margin: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+}
+#hweb-search-panel.hweb-sbox-728x90 .hweb-hotel-hide .hweb-location .hweb-col{
+	width:180px;
+}
+#hweb-search-panel.hweb-sbox-728x90 .hweb-roomSelectDiv.hweb-col{
+	width:40px;
+	margin-left:8px;
+}
+#hweb-search-panel.hweb-sbox-728x90 .hweb-passType.hweb-col{
+	width:105px;
+}
+#hweb-search-panel.hweb-sbox-728x90 .hweb-hotel-hide .hweb-passType.hweb-col{
+	width:150px;
+}
+#hweb-search-panel.hweb-sbox-728x90 .hweb-search-button.hweb-col{
+	width:auto;
+}
+#hweb-search-panel.hweb-sbox-728x90 .hweb-direction{
+    width: 45%;
+    margin:1%;
+}
+#hweb-search-panel.hweb-sbox-728x90 .radioDirections label{
+	width:44%;
+}
+#hweb-search-panel.hweb-sbox-728x90 .hweb-location{
+    width: 44%;
+    clear:left;
+    margin-left:1%;
+}
+#hweb-search-panel.hweb-sbox-728x90 .hweb-location .hweb-col {
+    width: 48%;
+    margin-right:1%;
+}
+#hweb-search-panel.hweb-sbox-728x90 .hweb-hotel-hide .hweb-location .hweb-col {
+    width: 98%;
+    margin-right:2%;
+}
+#hweb-search-panel.hweb-sbox-728x90 .hweb-dates{
+    width: 32%;
+    margin-right:1%;
+}
+#hweb-search-panel.hweb-sbox-728x90 .hweb-guests{
+    width: 28%;
+}
+#hweb-search-panel.hweb-sbox-728x90 .hweb-search-button {
+    width: auto;
+}
+#hweb-search-panel.hweb-sbox-728x90 .hweb-dateFrom{
+	width:49%;
+	margin-right:1%;
+    padding: 0;
+}
+#hweb-search-panel.hweb-sbox-728x90 input[type="text"] {
+    width: 92%;
+}
+#hweb-search-panel.hweb-sbox-728x90 .hweb-dateTo{
+	width:50%;
+}
+
+#hweb-search-panel.hweb-sbox-728x90 .hweb-roomSelectDiv{
+	width:21%;
+	margin-right:1%;
+}
+#hweb-search-panel.hweb-sbox-728x90 .hweb-passType{
+	width:78%;
+}
+#hweb-search-panel.hweb-sbox-728x90 .hweb-guests span {
+    margin-left: 1%;
+}
+#hweb-search-panel.hweb-sbox-728x90 .hweb-search-button .hweb-button{
+	float:right;
+	margin-top:13px;
+}
+#hweb-search-panel.hweb-sbox-728x90 .hweb-promo{
+	float:left;
+	padding:20px 10px;
+	height:90px;
+	width:160px;
+	line-height:1.8;
+}
+#hweb-search-panel.hweb-sbox-728x90 .hweb-promo-show .hweb-location{
+	clear:none;
+	width:34%;
+}
+#hweb-search-panel.hweb-sbox-728x90 .hweb-promo-show .hweb-dates{
+	width:28%;
+}
+
+
+/*** 640x60 ***/
+
+#hweb-search-panel.hweb-sbox-640x60{
+	width:640px;
+}
+#hweb-search-panel.hweb-sbox-640x60 .hweb-sbox-inner{
+	height:60px;
+	overflow:inherit;
+}
+#hweb-search-panel.hweb-sbox-640x60 .hweb-direction{
+	margin:-30px 0 5px;
+	width: 45%;
+}
+#hweb-search-panel.hweb-sbox-640x60 .hweb-show-transfer.hweb-direction{
+	width: 50%;
+}
+#hweb-search-panel.hweb-sbox-640x60 .hweb-title{
+    display:none;
+}
+#hweb-search-panel.hweb-sbox-640x60 .hweb-location label,
+#hweb-search-panel.hweb-sbox-640x60 .hweb-dates label{
+	font-size:10px;
+	margin:3px 0 0;
+}
+#hweb-search-panel.hweb-sbox-640x60 .hweb-sbox-inner .hweb-login{
+	display: inline-block;
+    margin: 0;
+    position: absolute;
+    right: 0;
+    top: -21px;
+    width: auto;
+}
+#hweb-search-panel.hweb-sbox-640x60 .hweb-sbox-inner .hweb-login a{
+	text-shadow: 1px 1px 0 #ccc;
+}
+#hweb-search-panel.hweb-sbox-640x60 .hweb-hotel-hide .hweb-location .hweb-col{
+	width:180px;
+}
+#hweb-search-panel.hweb-sbox-640x60 .hweb-roomSelectDiv.hweb-col{
+	width:40px;
+	margin-left:8px;
+}
+#hweb-search-panel.hweb-sbox-640x60 .hweb-passType.hweb-col{
+	width:105px;
+}
+#hweb-search-panel.hweb-sbox-640x60 .hweb-hotel-hide .hweb-passType.hweb-col{
+	width:150px;
+}
+#hweb-search-panel.hweb-sbox-640x60 .hweb-search-button.hweb-col{
+	width:auto;
+}
+#hweb-search-panel.hweb-sbox-640x60 .hweb-location{
+    width: 42%;
+    clear:left;
+    margin-left:1%;
+}
+#hweb-search-panel.hweb-sbox-640x60 .hweb-location .hweb-col {
+    width: 48%;
+    margin-right:1%;
+}
+#hweb-search-panel.hweb-sbox-640x60 .hweb-hotel-hide .hweb-location .hweb-col {
+    width: 98%;
+    margin-right:2%;
+}
+#hweb-search-panel.hweb-sbox-640x60 .hweb-dates{
+    width: 34%;
+    margin-right:1%;
+}
+#hweb-search-panel.hweb-sbox-640x60 .hweb-guests{
+    width: 28%;
+}
+#hweb-search-panel.hweb-sbox-640x60 .hweb-search-button {
+    width: auto;
+}
+#hweb-search-panel.hweb-sbox-640x60 .hweb-dateFrom{
+	width:49%;
+	margin-right:1%;
+    padding: 0;
+}
+#hweb-search-panel.hweb-sbox-640x60 input[type="text"] {
+    width: 92%;
+}
+#hweb-search-panel.hweb-sbox-640x60 .hweb-dateTo{
+	width:50%;
+}
+
+#hweb-search-panel.hweb-sbox-640x60 .hweb-search-button .hweb-button{
+	margin-top:13px;
+}
+#hweb-search-panel.hweb-sbox-640x60 .hweb-promo{
+	float: left;
+    height: 50px;
+    line-height: 1;
+    padding: 10px 5px;
+    width: 130px;
+}
+#hweb-search-panel.hweb-sbox-640x60 .hweb-promo-show .hweb-location{
+	clear:none;
+	width:34%;
+}
+#hweb-search-panel.hweb-sbox-640x60 .hweb-promo-show .hweb-dates{
+	width:28%;
+}
+
+
+
+
+/*** 120x400 ***/
+
+#hweb-search-panel.hweb-sbox-120x400{
+	width:120px;
+}
+#hweb-search-panel.hweb-sbox-120x400 .hweb-sbox-inner{
+	height:400px;
+}
+#hweb-search-panel.hweb-sbox-120x400 .hweb-title{
+	font-size:12px;
+	padding: 10px 0;
+    text-align: center;
+}
+#hweb-search-panel.hweb-sbox-120x400 .hweb-login{
+	bottom: 0;
+    left: 0;
+    margin: 0;
+    position: absolute;
+}
+#hweb-search-panel.hweb-sbox-120x400 .hweb-login a{
+    padding:5px;
+    width: 100%;
+    display:block;
+}
+#hweb-search-panel.hweb-sbox-120x400 .hweb-direction{
+	margin:10px 0 5px;
+}
+#hweb-search-panel.hweb-sbox-120x400 .radioDirections {
+    overflow: inherit;
+}
+#hweb-search-panel.hweb-sbox-120x400 .hweb-col{
+	width:100%;
+	margin:5% 0 0;
+}
+#hweb-search-panel.hweb-sbox-120x400 .hweb-passType span{
+	width:48%;
+}
+#hweb-search-panel.hweb-sbox-120x400 .hweb-search-button{
+    margin-top: 25%;
+    text-align: center;
+    width: 100%;
+}
+#hweb-search-panel.hweb-sbox-120x400 .hweb-promo-show .hweb-search-button{
+    margin-top: 15%;
+}
+#hweb-search-panel.hweb-sbox-120x400 .hweb-button{
+	width:100%;
+}
+#hweb-search-panel.hweb-sbox-120x400 .hweb-show-transfer .hweb-icon{
+	display:inline;
+}
+#hweb-search-panel.hweb-sbox-120x400 .hweb-show-transfer .radioDirections label {
+    margin:0 1px 0 0;
+    width:32.4%;    
+    overflow: inherit;
+    position:inherit;
+}
+#hweb-search-panel.hweb-sbox-120x400 .radioDirections .ui-state-default{
+	font-size:10px;
+}
+#hweb-search-panel.hweb-sbox-120x400 .radioDirections label{
+	width:98%;
+}
+#hweb-search-panel.hweb-sbox-120x400 .hweb-show-transfer .radioDirections label {
+    margin:0 1px 0 0;
+    width:32.4%;    
+    overflow: inherit;
+    position:inherit;
+}
+#hweb-search-panel.hweb-sbox-120x400 .hweb-show-transfer .radioDirections label .ui-button-text{
+    padding:5px 0 0;
+}
+#hweb-search-panel.hweb-sbox-120x400 .hweb-show-transfer .radioDirections .ui-state-default .d-icon-text,
+#hweb-search-panel.hweb-sbox-120x400 .hweb-show-transfer .radioDirections .ui-state-default .d-text,
+#hweb-search-panel .radioDirections .ui-state-default .d-icon-text{
+	display:none;
+}
+#hweb-search-panel.hweb-sbox-120x400 .hweb-show-transfer .radioDirections .ui-state-default.ui-state-active .d-icon-text{
+    display: block;
+    font-size: 12px;
+    left: 5px;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 50px;
+    width: auto;
+}
+#hweb-search-panel .hweb-show-transfer .radioDirections .ui-state-default .d-text{
+	display:inline;
+}
+#hweb-search-panel .radioDirections .ui-state-default .d-icon-text{
+	display:none;
+}
+
+#hweb-search-panel #widget_search_labels_transferonly {display:none;}
+
+
+/* hweb cc phone */
+
+#hweb-search-panel .hweb-phone{
+	display:none;
+	padding:5px;
+	font-size:11px;
+	text-align:center;
+}
+
+#hweb-search-panel .hweb-icon-phone{
+    margin-right:4px;
+    display:inline-block;
+    position:relative;
+    top:4px;
+}
+#hweb-search-panel .hweb-icon-phone img{
+    border:0;
+    margin:0;
+    padding:0;
+    background:none;
+    width:20px;
+    height:20px;
+    vertical-align:middle;
+}
+/* #hweb-search-panel .hweb-icon-phone.hweb-dark img.hweb-icon-dark, 
+#hweb-search-panel .hweb-icon-phone.hweb-light img.hweb-icon-light{
+    display:inline-block;
+}
+#hweb-search-panel .hweb-icon-phone.hweb-light img.hweb-icon-dark,
+#hweb-search-panel .hweb-icon-phone.hweb-dark img.hweb-icon-light{
+    display:none;
+}
+*/
+#hweb-search-panel .hweb-cc-num{
+	font-size:15px;
+	font-weight:bold;
+	margin-left:4px;
+}
+#hweb-search-panel .hweb-phone-show .hweb-login {
+    z-index: 1;
+}
+#hweb-search-panel.hweb-sbox-300x250 .hweb-phone-show .hweb-phone{
+	position:absolute;
+	bottom:0;
+	left:0;
+	width:100%;
+	display:inline-block;
+}
+#hweb-search-panel.hweb-sbox-300x250 .hweb-phone-show.hweb-hotel-hide .hweb-search-button{
+	margin:20px 0 35px;
+}
+#hweb-search-panel.hweb-sbox-300x250 .hweb-phone-show.hweb-hotel-hide .hweb-col {
+    margin-top: 15px;
+}
+#hweb-search-panel.hweb-sbox-300x250 .hweb-phone-show .hweb-login {
+    bottom: 60px;
+}
+
+#hweb-search-panel.hweb-sbox-400x400 .hweb-phone-show .hweb-phone{
+	position:absolute;
+	bottom:0;
+	left:0;
+	width:100%;
+	display:inline-block;
+}
+#hweb-search-panel.hweb-sbox-400x400 .hweb-phone-show .hweb-search-button {
+    margin-bottom: 70px;
+}
+#hweb-search-panel.hweb-sbox-400x400 .hweb-phone-show .hweb-login {
+    bottom: 34px;
+}
+
+#hweb-search-panel.hweb-sbox-728x90 .hweb-phone-show .hweb-phone{
+	bottom: 58px;
+    display: inline-block;
+    left: 41%;
+    padding: 2px;
+    position: absolute;
+    text-align: left;
+    width: 58%;
+}
+#hweb-search-panel.hweb-sbox-728x90 .hweb-icon-phone img{
+    height: 16px;
+    margin-bottom: 3px;
+    width: 16px;
+}
+#hweb-search-panel.hweb-sbox-728x90 .hweb-icon-phone{
+    font-size:9px;
+    margin-left:4px;
+}
+#hweb-search-panel.hweb-sbox-728x90 .hweb-phone-show .hweb-login {
+    top:8px;
+}
+
+#hweb-search-panel.hweb-sbox-640x60 .hweb-phone-show .hweb-phone {
+    display: inline-block;
+    font-size: 11px;
+    left: 39%;
+    padding: 3px 4px;
+    position: absolute;
+    text-align: left;
+    top: -26px;
+    width: 60%;
+}
+#hweb-search-panel.hweb-sbox-640x60 .hweb-icon-phone img{
+    height: 16px;
+    margin-bottom: 3px;
+    width: 16px;
+}
+#hweb-search-panel.hweb-sbox-640x60 .hweb-cc-num {
+    font-size: 14px;
+    letter-spacing: -0.6px;
+}
+#hweb-search-panel.hweb-sbox-640x60 .hweb-phone-show .radioDirections label {
+    width: 43%;
+}
+#hweb-search-panel.hweb-sbox-640x60 .hweb-sbox-inner.hweb-phone-show .hweb-login {
+    top: -24px;
+}
+#hweb-search-panel.hweb-sbox-640x60 .hweb-icon-phone {
+    font-size: 9px;
+    margin-left:4px;
+}
+#hweb-search-panel.hweb-sbox-640x60 .hweb-sbox-inner.hweb-phone-show .hweb-login a {
+    font-size: 11px;
+}
+
+
+#hweb-search-panel.hweb-sbox-120x400 .hweb-phone-show .hweb-phone {
+    display: inline-block;
+    font-size: 11px;
+    padding: 12px 4px 40px;
+    position: absolute;
+    bottom: 0;
+    left:0;
+    width:100%;
+}
+#hweb-search-panel.hweb-sbox-120x400 .hweb-phone-text {
+    display: block;
+    margin:5px 0 1px;
+}
+#hweb-search-panel.hweb-sbox-120x400 .hweb-icon-phone {
+    font-size: 9px;
+    margin: 0;
+    padding: 3px;
+}
+#hweb-search-panel.hweb-sbox-120x400 .hweb-cc-num {
+    font-size: 13px;
+    margin: 0;
+}
+
+
+/*** TOGGLE ***/
+
+#hweb-search-panel.hweb-sbox-toggle{
+	width:400px;
+	padding:0;
+	float:left;
+	display: none;
+	background:#eee;
+}
+#hweb-search-panel.hweb-sbox-toggle * {
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	margin:0;
+	padding:0;
+}
+#hweb-search-panel.hweb-sbox-toggle input[type="text"], 
+#hweb-search-panel.hweb-sbox-toggle select {
+	width: 100%;
+	color: #aaa;
+	font-size: 16px;
+	padding: 7px 10px;
+	border: 1px solid #eee;
+	border-radius: 4px;
+	background: #fff; 
+	height: 35px;
+}
+#hweb-search-panel.hweb-sbox-toggle .radioDirections label .ui-button-text {
+    height:30px;
+    line-height:29px;
+}
+#hweb-search-panel.hweb-sbox-toggle .radioDirections .ui-state-default {
+    font-size: 12px;
+    height: auto;
+    line-height: inherit;
+}
+#hweb-search-panel.hweb-sbox-toggle .hweb-login{
+	position:absolute;
+	right:0;
+	top:-26px;
+	width:40%;
+	margin:0;
+}
+#hweb-search-panel.hweb-sbox-toggle .hweb-direction{
+	position:absolute;
+	left:0;
+	top:-33px;
+	width:60%;
+	margin:0;
+}
+#hweb-search-panel.hweb-sbox-toggle .hweb-col{
+	width:100%;
+	float:none;
+}
+#hweb-search-panel.hweb-sbox-toggle .hweb-location .hweb-to,
+#hweb-search-panel.hweb-sbox-toggle .hweb-dateTo{
+	margin-top:20px;
+}
+#hweb-search-panel.hweb-sbox-toggle .hweb-search-button,
+#hweb-search-panel.hweb-sbox-toggle .hweb-dates,
+#hweb-search-panel.hweb-sbox-toggle .hweb-location{
+    padding:10px 20px;
+	}
+#hweb-search-panel.hweb-sbox-toggle .hweb-button {
+	width:100%;
+	padding:10px;
+	text-align:center;
+	margin:30px 0;
+}
+
+
+/*** LEFT RIGHT ***/
+
+.hweb-buttonReservation{
+	display: block;
+	margin-top: 150px;
+	border:0;
+	padding:5px 10px;
+	font-size:12px;
+	cursor:pointer;
+}
+.hweb-buttonReservation:hover {
+	opacity:.8;
+	filter: alpha(opacity=80);
+}
+.hweb-buttonReservation.hweb-button-left{
+	float: right;
+}
+
+.hweb-buttonReservation.hweb-button-right{
+	float: left;
+}
+
+.hweb-main.hweb-left {
+	position: absolute;
+	top: 20%;
+	left: 0;
+}
+.hweb-main.hweb-right {
+	position: absolute;
+	top: 20%;
+	right: 0;
+}
+
+
+
+/*** BOTTOM ***/
+
+.hweb-buttonReservation.hweb-button-bottom {
+	margin: auto;
+	float:right;
+}
+.hweb-buttonReservation.hweb-button-bottom:hover {
+	opacity:.8;
+	filter: alpha(opacity=80);
+}
+
+.hweb-main.hweb-bottom {
+	width: 720px;
+	margin-left: -360px;
+	position: absolute;
+	left: 50%;
+	bottom: 0;
+}
+.hweb-main.hweb-bottom #hweb-search-panel.hweb-sbox-toggle{
+	width: 100%;
+}
+.hweb-main.hweb-bottom #hweb-search-panel.hweb-sbox-toggle .hweb-location{
+	margin:20px 0;
+}
+.hweb-main.hweb-bottom #hweb-search-panel.hweb-sbox-toggle .hweb-col {
+    float: left;
+    width: 50%;
+    margin:0;
+}
+.hweb-main.hweb-bottom #hweb-search-panel.hweb-sbox-toggle .hweb-hotel-hide .hweb-from.hweb-col {
+    width: 100%;
+    margin:0;
+}
+.hweb-main.hweb-bottom #hweb-search-panel.hweb-sbox-toggle .hweb-from.hweb-col,
+.hweb-main.hweb-bottom #hweb-search-panel.hweb-sbox-toggle .hweb-dateFrom.hweb-col {
+    width: 46%;
+    margin:0 4% 0 0;
+}
+.hweb-main.hweb-bottom #hweb-search-panel.hweb-sbox-toggle .hweb-button{
+	width: auto;
+	float:right;
+	padding:10px 30px;
+}
+.hweb-main.hweb-bottom #hweb-search-panel.hweb-sbox-toggle .hweb-login {
+    right: auto;
+    top: auto;
+    left:20px;
+    bottom:40px;
+    padding:5px;
+    width: auto;
+}
+
+.phoneLink{
+	text-decoration: none;
+	color: orange;
+}
+
+/*** RESPONSIVE ***/
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 480px) {
+	html #hweb-search-panel,
+	html #hweb-search-panel .hweb-sbox-inner{
+	width:100% !important;
+	height:auto !important;
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box; 
+	}
+	
+	html #hweb-search-panel.hweb-sbox-728x90 .hweb-search-button,
+	html #hweb-search-panel.hweb-sbox-728x90 .hweb-dates,
+	html #hweb-search-panel.hweb-sbox-728x90 .hweb-location,
+	html #hweb-search-panel.hweb-sbox-728x90 .hweb-promo,
+	html #hweb-search-panel.hweb-sbox-728x90 .hweb-direction,
+	html #hweb-search-panel.hweb-sbox-728x90 .hweb-promo-show .hweb-location,
+	html #hweb-search-panel.hweb-sbox-728x90 .hweb-promo-show .hweb-dates,
+	html #hweb-search-panel.hweb-sbox-640x60 .hweb-search-button,
+	html #hweb-search-panel.hweb-sbox-640x60 .hweb-dates,
+	html #hweb-search-panel.hweb-sbox-640x60 .hweb-location,
+	html #hweb-search-panel.hweb-sbox-640x60 .hweb-promo,
+	html #hweb-search-panel.hweb-sbox-640x60 .hweb-direction{
+    width: 100%;
+    margin:0;
+    padding:5px;
+	}
+	html #hweb-search-panel.hweb-sbox-728x90 .hweb-location input[type="text"],
+	html #hweb-search-panel.hweb-sbox-728x90 .hweb-location select,
+	html #hweb-search-panel.hweb-sbox-640x60 .hweb-location input[type="text"],
+	html #hweb-search-panel.hweb-sbox-640x60 .hweb-location select {
+    width: 100%;
+	}
+	html #hweb-search-panel.hweb-sbox-728x90 .hweb-search-button .hweb-button{
+	float:none;
+	margin:10px 0;
+	}
+	html #hweb-search-panel.hweb-sbox-728x90 .hweb-sbox-inner .hweb-login,
+	html #hweb-search-panel.hweb-sbox-640x60 .hweb-sbox-inner .hweb-login,
+	html #hweb-search-panel.hweb-sbox-120x400 .hweb-sbox-inner .hweb-login{
+	bottom: 0;
+	width:100%;
+	top: auto;
+	}
+	html #hweb-search-panel.hweb-sbox-728x90 .hweb-sbox-inner .hweb-login a,
+	html #hweb-search-panel.hweb-sbox-640x60 .hweb-sbox-inner .hweb-login a,
+	html #hweb-search-panel.hweb-sbox-120x400 .hweb-sbox-inner .hweb-login a{
+	display:block;
+	padding:1%;
+	width:100%;
+	}
+	html #hweb-search-panel.hweb-sbox-120x400 .hweb-sbox-inner .hweb-promo{
+	float: left;
+    margin: 2% 0;
+    padding: 10% 5%;
+    width: 100%;
+	}
+	html #hweb-search-panel .hweb-button{
+	display:block;
+	float:none;
+	width:100%;
+	margin:0 auto;
+	}
+	html #hweb-search-panel.hweb-sbox-300x250 .hweb-button{
+	width:auto;
+	float:right;
+	}
+	html #hweb-search-panel.hweb-sbox-120x400 .hweb-search-button{
+	margin:30px 0;
+	}
+	html #hweb-search-panel.hweb-sbox-toggle{
+	margin-bottom:30px;
+	}
+	html .hweb-buttonReservation,
+	html .hweb-main.hweb-left,
+	html .hweb-main.hweb-right,
+	html .hweb-main.hweb-bottom,
+	html .hweb-buttonReservation.hweb-button-left,
+	html .hweb-buttonReservation.hweb-button-right{
+	width: 100%;
+	margin: 0;
+	position: absolute;
+	left: auto;
+	bottom: 0;
+	float:none;
+	top:auto;
+	}
+	html #hweb-search-panel.hweb-sbox-728x90 .radioDirections label{
+	width:50%;
+	}
+	html #hweb-search-panel.hweb-sbox-728x90 input[type="text"] {
+    width: 100%;
+	}
+	html #hweb-search-panel.hweb-sbox-728x90 .hweb-location .hweb-col {
+    width: 49%;
+    }
+    html #hweb-search-panel.hweb-sbox-728x90 .hweb-search-button {
+    margin-bottom: 10px;
+	}
+	html #hweb-search-panel.hweb-sbox-400x400 .hweb-search-button{
+	margin-bottom: 20px;
+	}
+	html #hweb-search-panel.hweb-sbox-120x400 .hweb-col{
+	margin:10px 0 0;
+	}
+	html #hweb-search-panel.hweb-sbox-120x400 .hweb-search-button{
+    margin-top: 25px;
+    margin-bottom: 30px;
+    }
+    html #hweb-search-panel.hweb-sbox-120x400 .radioDirections label{
+	width:50%;
+	}
+	html #hweb-search-panel.hweb-sbox-728x90 .hweb-phone-show .hweb-phone,
+	html #hweb-search-panel.hweb-sbox-640x60 .hweb-phone-show .hweb-phone{
+	position:inherit;
+	width:auto;
+	margin:3px auto;
+	}
+	html #hweb-search-panel.hweb-sbox-120x400 .hweb-phone-show .hweb-phone{
+	width:auto;
+	padding:0 0 10px;
+	}
+	html #hweb-search-panel.hweb-sbox-120x400 .hweb-phone-text{
+	display:inline-block;
+	margin:5px;
+	}
+}
