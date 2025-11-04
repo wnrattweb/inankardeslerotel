@@ -1,377 +1,336 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <title>İnan Kardeşler Otel Wi‑Fi | Hoş Geldiniz</title>
-  <meta name="description" content="Wi‑Fi oturumunuz aktif. Restoran, kahvaltı, canlı destek, Uzungöl Dursun Ali İnan Müzesi ve yakın yerler." />
-  <meta name="color-scheme" content="light dark" />
-  <style>
-    :root{
-      /* Marka & tema — HEX'leri bize iletirsen birebir yaparım */
-      --brand:#E87722;       /* (yaklaştırma) İnan Kardeşler turuncusu */
-      --accent:#C89B3C;      /* tema hissi: amber/gold vurgusu */
-      --ink:#0E1217; --ink-2:#5B6676;
-      --bg:#0B0F14; --card:#fff; --stroke:rgba(2,6,23,.12);
-      --safe-l:max(16px, env(safe-area-inset-left));
-      --safe-r:max(16px, env(safe-area-inset-right));
-    }
-    @media (prefers-color-scheme: light){
-      :root{ --bg:#F7FAFC; --ink:#0E1217; --ink-2:#475569; --stroke:rgba(2,6,23,.10) }
-    }
-    *{box-sizing:border-box} html,body{height:100%}
-    body{
-      margin:0; color:var(--ink);
-      font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
-      background:
-        radial-gradient(900px 560px at 100% 0%, #0c141d 0%, transparent 55%),
-        radial-gradient(900px 560px at 0% 100%, #101a24 0%, transparent 55%),
-        linear-gradient(180deg, var(--bg), #131a23);
-      min-height:100svh;
-    }
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<title>İnan Kardeşler Otel Wi‑Fi | Hoş Geldiniz</title>
+<meta name="description" content="Wi‑Fi oturumunuz aktif. Restoran, kahvaltı, canlı destek, Uzungöl Müzesi ve yakın yerler." />
+<meta name="color-scheme" content="light dark" />
+<style>
+  :root{
+    --brand:#E87722; --accent:#C89B3C;
+    --ink:#0E1217; --ink-2:#5B6676;
+    --bg:#0B0F14; --card:#fff; --stroke:rgba(2,6,23,.12);
+    --safe-l:max(16px, env(safe-area-inset-left));
+    --safe-r:max(16px, env(safe-area-inset-right));
+  }
+  @media (prefers-color-scheme: light){
+    :root{ --bg:#F7FAFC; --ink:#0E1217; --ink-2:#475569; --stroke:rgba(2,6,23,.10) }
+  }
+  *{box-sizing:border-box} html,body{height:100%}
+  body{
+    margin:0; color:var(--ink);
+    font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+    background:
+      radial-gradient(900px 560px at 100% 0%, #0c141d 0%, transparent 55%),
+      radial-gradient(900px 560px at 0% 100%, #101a24 0%, transparent 55%),
+      linear-gradient(180deg, var(--bg), #131a23);
+    min-height:100svh;
+  }
 
-    /* Üst bar */
-    .top{ position:sticky; top:0; z-index:10; backdrop-filter: blur(10px) saturate(140%);
-      background: color-mix(in oklab, #000 12%, transparent); border-bottom:1px solid var(--stroke) }
-    .top-inner{
-      width:min(1120px, 92vw); margin-inline:auto; padding-block:12px;
-      padding-left:var(--safe-l); padding-right:var(--safe-r);
-      display:flex; align-items:center; gap:12px; flex-wrap:wrap;
-    }
-    .brand{ display:flex; align-items:center; gap:12px; text-decoration:none; color:inherit }
-    .brand img{ height:30px }
-    .top-pills{ display:flex; align-items:center; gap:8px; margin-left:auto }
-    .pill{ display:inline-flex; align-items:center; gap:8px; border:1px solid var(--stroke);
-      padding:6px 10px; border-radius:999px; background:#fff; color:#0a0f14; font-size:13px }
-    .lang{ display:flex; gap:8px }
-    .lang button{
-      border:1px solid var(--stroke); cursor:pointer; font-weight:700; border-radius:999px;
-      padding:8px 14px; min-width:46px; background:#fff; color:#0b0f14; box-shadow:0 1px 2px rgba(0,0,0,.08);
-    }
-    .lang button[aria-pressed="true"]{
-      background:linear-gradient(90deg,var(--brand), color-mix(in oklab, var(--brand), black 12%));
-      color:#fff; border-color: color-mix(in oklab, var(--brand) 35%, white); box-shadow:0 2px 6px rgba(0,0,0,.18);
-    }
-    @media (max-width:560px){ .top-pills{ width:100%; justify-content:flex-end } }
+  /* ÜST BAR (AP kaldırıldı) */
+  .top{
+    position:sticky; top:0; z-index:10;
+    backdrop-filter: blur(10px) saturate(140%);
+    background: color-mix(in oklab, #000 12%, transparent);
+    border-bottom:1px solid var(--stroke);
+  }
+  .top-inner{
+    width:min(1120px, 92vw);
+    margin-inline:auto;
+    padding-block:12px;
+    padding-left: var(--safe-l);
+    padding-right: var(--safe-r);
+    display:flex; align-items:center; gap:12px;
+    flex-wrap:wrap;
+  }
+  .brand{ display:flex; align-items:center; gap:12px; text-decoration:none; color:inherit }
+  .brand img{ height:30px }
+  .top-pills{ display:flex; align-items:center; gap:8px; margin-left:auto }
+  .pill{
+    display:inline-flex; align-items:center; gap:8px; border:1px solid var(--stroke);
+    padding:6px 10px; border-radius:999px; background:#fff; color:#0a0f14; font-size:13px
+  }
+  .lang{ display:flex; align-items:center; gap:8px }
+  .lang button{
+    border:1px solid var(--stroke); cursor:pointer; font-weight:700; border-radius:999px;
+    padding:8px 14px; min-width:46px; background:#fff; color:#0b0f14;
+    box-shadow: 0 1px 2px rgba(0,0,0,.08);
+  }
+  .lang button[aria-pressed="true"]{
+    background:linear-gradient(90deg,var(--accent), color-mix(in oklab, var(--accent), black 12%));
+    color:#fff; border-color: color-mix(in oklab, var(--accent) 35%, white);
+    box-shadow: 0 2px 6px rgba(0,0,0,.18);
+  }
+  @media (max-width:560px){ .top-pills{ width:100%; justify-content:flex-end } }
 
-    /* Hero */
-    .hero{ position:relative; border-bottom:1px solid var(--stroke); background:#0b0f14; isolation:isolate; overflow:hidden }
-    .hero img.bg{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.42; filter:saturate(110%) contrast(105%) }
-    .shade{ position:absolute; inset:0; background:linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.25) 25%,rgba(0,0,0,.60)) }
-    .container{ width:min(1120px,92vw); margin-inline:auto; padding-left:var(--safe-l); padding-right:var(--safe-r); }
-    .hero .content{ position:relative; z-index:1; padding:clamp(24px,5vw,56px) 0; color:#fff }
-    .kicker{ letter-spacing:.25em; font-weight:700; opacity:.9; font-size:12px }
-    h1{ margin:.4rem 0; font-size: clamp(26px,4vw,42px); line-height:1.15; color:#fff }
-    .sub{ margin:.3rem 0 1rem; max-width:64ch; color:#e7ecef }
+  /* Hero */
+  .hero{ position:relative; border-bottom:1px solid var(--stroke); background:#0b0f14; isolation:isolate; overflow:hidden }
+  .hero img.bg{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.42; filter:saturate(110%) contrast(105%) }
+  .shade{ position:absolute; inset:0; background:linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.25) 25%,rgba(0,0,0,.60)) }
+  .container{ width:min(1120px,92vw); margin-inline:auto; padding-left: var(--safe-l); padding-right: var(--safe-r); }
+  .hero .content{ position:relative; z-index:1; padding:clamp(24px,5vw,56px) 0; color:#fff }
+  .kicker{ letter-spacing:.25em; font-weight:700; opacity:.9; font-size:12px }
+  h1{ margin:.4rem 0; font-size: clamp(26px,4vw,42px); line-height:1.15; color:#fff }
+  .sub{ margin:.3rem 0 1rem; max-width:64ch; color:#e7ecef }
 
-    /* Grid & kartlar */
-    .grid{ display:grid; grid-template-columns: repeat(12, 1fr); gap:16px; padding:20px 0 28px }
-    .col-8{ grid-column: span 8 } .col-4{ grid-column: span 4 }
-    @media (max-width: 960px){ .col-8,.col-4{ grid-column:1 / -1 } }
+  /* Grid & kartlar */
+  .grid{ display:grid; grid-template-columns: repeat(12, 1fr); gap:16px; padding:20px 0 28px }
+  .col-8{ grid-column: span 8 } .col-4{ grid-column: span 4 }
+  @media (max-width: 960px){ .col-8,.col-4{ grid-column:1 / -1 } }
+  .card{
+    background:var(--card);
+    border:1px solid color-mix(in oklab, var(--ink) 10%, #e9eef5);
+    border-radius:16px; overflow:hidden; box-shadow:0 8px 24px rgba(0,0,0,.08)
+  }
+  .card .hd{ padding:14px 16px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid var(--stroke) }
+  .card .bd{ padding:14px 16px }
+  .muted{ color:var(--ink-2) }
 
-    .card{ background:var(--card);
-      border:1px solid color-mix(in oklab, var(--ink) 10%, #e9eef5);
-      border-radius:16px; overflow:hidden; box-shadow:0 8px 24px rgba(0,0,0,.08) }
-    .card .hd{ padding:14px 16px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid var(--stroke) }
-    .card .bd{ padding:14px 16px }
-    .muted{ color:var(--ink-2) }
+  .list{ display:grid; grid-template-columns: 1fr 1fr; gap:12px }
+  @media (max-width:760px){ .list{ grid-template-columns:1fr } }
+  a.item, .item{
+    display:grid; grid-template-columns: 78px 1fr; gap:12px;
+    background:#fff; color:inherit; text-decoration:none;
+    border:1px solid color-mix(in oklab, var(--ink) 10%, #e5e7eb);
+    border-radius:14px; padding:12px; align-items:center;
+    box-shadow: 0 6px 18px rgba(0,0,0,.06);
+  }
+  a.item:hover, a.item:focus-visible{
+    border-color: color-mix(in oklab, var(--accent) 35%, #e5e7eb);
+    box-shadow: 0 8px 22px rgba(0,0,0,.10); transform: translateY(-1px);
+  }
+  .thumb{
+    width:78px; height:78px; border-radius:10px; object-fit:cover; display:block;
+    border:1px solid color-mix(in oklab, var(--accent) 22%, var(--stroke));
+  }
+  .item h4{ margin:2px 0 4px; font-size:16px; color:var(--ink) }
+  .item p{ margin:0; font-size:14px; color:var(--ink) }
+  .tag{ display:inline-flex; align-items:center; gap:8px; font-size:12px; border:1px solid var(--stroke); padding:2px 8px; border-radius:999px; background:#fff }
+  .tag.gold{ background: color-mix(in oklab, var(--accent) 16%, white); border-color: color-mix(in oklab, var(--accent) 28%, white) }
 
-    /* Liste kartları */
-    .list{ display:grid; grid-template-columns: 1fr 1fr; gap:12px }
-    @media (max-width:760px){ .list{ grid-template-columns:1fr } }
-    a.item, .item{
-      display:grid; grid-template-columns: 78px 1fr; gap:12px;
-      background:#fff; color:inherit; text-decoration:none;
-      border:1px solid color-mix(in oklab, var(--ink) 10%, #e5e7eb);
-      border-radius:14px; padding:12px; align-items:center; box-shadow:0 6px 18px rgba(0,0,0,.06);
-    }
-    a.item:visited{ color:inherit }
-    a.item:hover, a.item:focus-visible{
-      border-color: color-mix(in oklab, var(--accent) 35%, #e5e7eb);
-      box-shadow:0 8px 22px rgba(0,0,0,.10); transform:translateY(-1px);
-    }
-    .thumb{ width:78px; height:78px; border-radius:10px; object-fit:cover; display:block;
-      border:1px solid color-mix(in oklab, var(--accent) 22%, var(--stroke)) }
-    .item h4{ margin:2px 0 4px; font-size:16px; color:var(--ink) }
-    .item p{ margin:0; font-size:14px; color:var(--ink) }
-    .tag{ display:inline-flex; align-items:center; gap:8px; font-size:12px;
-      border:1px solid var(--stroke); padding:2px 8px; border-radius:999px; background:#fff }
-    .tag.gold{ background: color-mix(in oklab, var(--accent) 16%, white); border-color: color-mix(in oklab, var(--accent) 28%, white) }
-
-    .kv{ display:grid; grid-template-columns:1fr 1fr; gap:10px }
-    .kv div{ padding:8px 10px; border:1px dashed var(--stroke); border-radius:10px; background:#fff }
-    @media (max-width:620px){ .kv{ grid-template-columns:1fr } }
-
-    .footer{ margin:20px 0 40px; display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between; color:var(--ink-2) }
-    .link{ color:inherit; text-underline-offset:3px }
-    .sr{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap }
-  </style>
+  .kv{ display:grid; grid-template-columns:1fr 1fr; gap:10px }
+  .kv div{ padding:8px 10px; border:1px dashed var(--stroke); border-radius:10px; background:#fff }
+  @media (max-width:620px){ .kv{ grid-template-columns:1fr } }
+</style>
 </head>
 <body>
-  <!-- Üst bar -->
-  <div class="top">
-    <div class="top-inner">
-      <a class="brand" href="https://inankardeslerotel.com" rel="noopener">
-        <img src="https://inankardeslerotel.com/images/logo/logo.png" alt="İnan Kardeşler Otel logosu" />
-        <span class="sr">İnan Kardeşler Otel</span>
-      </a>
-      <div class="top-pills">
-        <span class="pill">SSID: <strong id="ssidTxt">INAN KARDEŞLER Wi‑Fi</strong></span>
-        <span class="pill">AP: <strong id="apTxt">—</strong></span>
-        <div class="lang" role="group" aria-label="Dil">
-          <button id="langTR" aria-pressed="true">TR</button>
-          <button id="langEN" aria-pressed="false">EN</button>
-        </div>
+
+<!-- ÜST BAR: AP kaldırıldı -->
+<div class="top">
+  <div class="top-inner">
+    <a class="brand" href="https://inankardeslerotel.com" rel="noopener">
+      <img src="https://inankardeslerotel.com/images/logo/logo.png" alt="İnan Kardeşler Otel logosu" />
+      <span class="sr">İnan Kardeşler Otel</span>
+    </a>
+    <div class="top-pills">
+      <span class="pill">SSID: <strong id="ssidTxt">InanKardeslerHotel</strong></span>
+      <!-- AP pili kaldırıldı -->
+      <div class="lang" role="group" aria-label="Dil">
+        <button id="langTR" aria-pressed="true">TR</button>
+        <button id="langEN" aria-pressed="false">EN</button>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- Hero -->
-  <header class="hero">
-    <img class="bg" src="https://lh3.googleusercontent.com/p/AF1QipPiga6YOOxs9z4V6FbuQfJSyT5bp5RN-yTRbIHj=s680-w680-h510-rw" alt="" />
-    <div class="shade"></div>
-    <div class="container content">
-      <div class="kicker">WIFI • İNAN KARDEŞLER OTEL</div>
-      <h1 id="heroTitle">Hoş geldiniz – Wi‑Fi bağlantınız aktif</h1>
-      <p class="sub" id="heroSub">Restoranımızı keşfedin, bahçedeki kahvaltıya göz atın, canlı destekten bize yazın ve Uzungöl’de yakındaki yerleri inceleyin.</p>
-    </div>
-  </header>
+<header class="hero">
+  <img class="bg" src="https://lh3.googleusercontent.com/p/AF1QipPiga6YOOxs9z4V6FbuQfJSyT5bp5RN-yTRbIHj=s680-w680-h510-rw" alt="" />
+  <div class="shade"></div>
+  <div class="container content">
+    <div class="kicker">WIFI • İNAN KARDEŞLER OTEL</div>
+    <h1 id="heroTitle">Hoş geldiniz – Wi‑Fi bağlantınız aktif</h1>
+    <p class="sub" id="heroSub">Restoranımızı keşfedin, bahçedeki kahvaltıya göz atın, canlı destekten bize yazın ve Uzungöl’de yakındaki yerleri inceleyin.</p>
+  </div>
+</header>
 
-  <main class="container">
-    <div class="grid">
-      <!-- Sol: Bilgiler -->
-      <section class="col-8">
-        <div class="card">
-          <div class="hd">
-            <strong id="hdWelcome">Uzungöl’de keyifli bir konaklama dileriz!</strong>
-            <span class="tag gold" id="connectedTag">Bağlı</span>
-          </div>
-          <div class="bd">
-            <div class="list">
-              <!-- Restoran -->
-              <a class="item" href="https://inankardeslerotel.com/restoran/" rel="noopener">
-                <img class="thumb" loading="lazy" src="https://lh3.googleusercontent.com/p/AF1QipN-rDy4stevcz3OlmKJzUAwBdWpOXEfncOiQnUr=s680-w680-h510-rw" alt="Restoran" />
-                <div>
-                  <span class="tag" id="tagRestaurant">Restoran</span>
-                  <h4 id="restTitle">Yöresel lezzetler</h4>
-                  <p id="restText">Tereyağında alabalık, muhlama/kuymak ve günlük menüler sizi bekliyor. → Restoran sayfası</p>
-                </div>
-              </a>
-              <!-- Canlı Destek -->
-              <a class="item" href="https://api.whatsapp.com/send?phone=+905327376010&text=Merhaba%21+" rel="noopener">
-                <img class="thumb" loading="lazy" src="https://play-lh.googleusercontent.com/bYtqbOcTYOlgc6gqZ2rwb8lptHuwlNE75zYJu6Bn076-hTmvd96HH-6v7S0YUAAJXoJN=w240-h480-rw" alt="Canlı Destek" />
-                <div>
-                  <span class="tag" id="tagSupport">Canlı Destek</span>
-                  <h4 id="waTitle">WhatsApp ile bize yazın</h4>
-                  <p id="waText">Sorularınız için 7/24 yanıtlıyoruz: +90 532 737 60 10</p>
-                </div>
-              </a>
-              <!-- Kahvaltı -->
-              <div class="item">
-                <img class="thumb" loading="lazy" src="https://lh3.googleusercontent.com/p/AF1QipN-rDy4stevcz3OlmKJzUAwBdWpOXEfncOiQnUr=s680-w680-h510-rw" alt="Kahvaltı" />
-                <div>
-                  <span class="tag" id="tagBreakfast">Kahvaltı</span>
-                  <h4 id="bfTitle">Bahçede, dere kenarı</h4>
-                  <p id="bfText">Otelin arkasındaki yeşil bahçemizde kahvaltı; gün boyu yiyecek‑içecek servisimiz mevcut.</p>
-                </div>
+<main class="container">
+  <div class="grid">
+    <section class="col-8">
+      <div class="card">
+        <div class="hd">
+          <strong id="hdWelcome">Uzungöl’de keyifli bir konaklama dileriz!</strong>
+          <span class="tag gold" id="connectedTag">Bağlı</span>
+        </div>
+        <div class="bd">
+          <div class="list">
+            <a class="item" href="https://inankardeslerotel.com/restoran/" rel="noopener">
+              <img class="thumb" loading="lazy" src="https://lh3.googleusercontent.com/p/AF1QipN-rDy4stevcz3OlmKJzUAwBdWpOXEfncOiQnUr=s680-w680-h510-rw" alt="Restoran" />
+              <div>
+                <span class="tag" id="tagRestaurant">Restoran</span>
+                <h4 id="restTitle">Yöresel lezzetler</h4>
+                <p id="restText">Tereyağında alabalık, muhlama/kuymak ve günlük menüler. → Restoran sayfası</p>
               </div>
-              <!-- Müze -->
-              <a class="item" href="https://inankardeslerotel.com/uzungol-muzesi.html" rel="noopener">
-                <img class="thumb" loading="lazy" src="https://lh3.googleusercontent.com/p/AF1QipN4Xa_wvPivb1qoB3yXH9Po6Zk-cgWFuFmXmtc5=s680-w680-h510-rw" alt="Uzungöl Dursun Ali İnan Müzesi" />
-                <div>
-                  <span class="tag" id="tagMuseum">Müze</span>
-                  <h4 id="museumTitle">Uzungöl Dursun Ali İnan Müzesi</h4>
-                  <p id="museumText">Kültür evi, kök‑taş eserleri ve bölge tarihini anlatan üç bölüm. → Detaylar</p>
-                </div>
-              </a>
-              <!-- Yakın Yerler -->
-              <div class="item">
-                <img class="thumb" loading="lazy" src="https://lh3.googleusercontent.com/p/AF1QipM94R1YFvHWMHy3_Am75Q57WAAquDh3WHV8OzNg=s680-w680-h510-rw" alt="Yakın yerler" />
-                <div>
-                  <span class="tag" id="tagNearby">Yakın Yerler</span>
-                  <h4 id="nearTitle">Uzungöl çevresinde</h4>
-                  <p id="nearText">
-                    • <strong>Uzungöl göl kenarı</strong> – yürüyüş ve manzara<br/>
-                    • <strong>Karester Yaylası</strong> – seyir noktası (2245 m)
-                  </p>
-                </div>
+            </a>
+            <a class="item" href="https://api.whatsapp.com/send?phone=+905327376010&text=Merhaba%21+" rel="noopener">
+              <img class="thumb" loading="lazy" src="https://play-lh.googleusercontent.com/bYtqbOcTYOlgc6gqZ2rwb8lptHuwlNE75zYJu6Bn076-hTmvd96HH-6v7S0YUAAJXoJN=w240-h480-rw" alt="Canlı Destek" />
+              <div>
+                <span class="tag" id="tagSupport">Canlı Destek</span>
+                <h4 id="waTitle">WhatsApp ile bize yazın</h4>
+                <p id="waText">Sorularınız için 7/24 yanıtlıyoruz: +90 532 737 60 10</p>
+              </div>
+            </a>
+            <div class="item">
+              <img class="thumb" loading="lazy" src="https://lh3.googleusercontent.com/p/AF1QipN-rDy4stevcz3OlmKJzUAwBdWpOXEfncOiQnUr=s680-w680-h510-rw" alt="Kahvaltı" />
+              <div>
+                <span class="tag" id="tagBreakfast">Kahvaltı</span>
+                <h4 id="bfTitle">Bahçede, dere kenarı</h4>
+                <p id="bfText">Yeşil bahçemizde kahvaltı; gün boyu yiyecek‑içecek servisi.</p>
+              </div>
+            </div>
+            <a class="item" href="https://inankardeslerotel.com/uzungol-muzesi.html" rel="noopener">
+              <img class="thumb" loading="lazy" src="https://lh3.googleusercontent.com/p/AF1QipN4Xa_wvPivb1qoB3yXH9Po6Zk-cgWFuFmXmtc5=s680-w680-h510-rw" alt="Müze" />
+              <div>
+                <span class="tag" id="tagMuseum">Müze</span>
+                <h4 id="museumTitle">Uzungöl Dursun Ali İnan Müzesi</h4>
+                <p id="museumText">Kültür evi, kök‑taş eserleri ve bölge tarihi. → Detaylar</p>
+              </div>
+            </a>
+            <div class="item">
+              <img class="thumb" loading="lazy" src="https://lh3.googleusercontent.com/p/AF1QipM94R1YFvHWMHy3_Am75Q57WAAquDh3WHV8OzNg=s680-w680-h510-rw" alt="Yakın yerler" />
+              <div>
+                <span class="tag" id="tagNearby">Yakın Yerler</span>
+                <h4 id="nearTitle">Uzungöl çevresinde</h4>
+                <p id="nearText">
+                  • <strong>Uzungöl göl kenarı</strong> – yürüyüş ve manzara<br/>
+                  • <strong>Karester Yaylası</strong> – seyir noktası (2245 m)
+                </p>
               </div>
             </div>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- Sağ: Oturum & İletişim -->
-      <aside class="col-4">
-        <div class="card">
-          <div class="hd"><strong id="sessionTitle">Wi‑Fi Oturum Bilgileri</strong></div>
-          <div class="bd">
-            <div class="kv">
-              <div><strong>SSID</strong><br><span id="ssidVal">—</span></div>
-              <div><strong>AP</strong><br><span id="apVal">—</span></div>
-              <div><strong>IP</strong><br><span id="ipVal">—</span></div>
-              <div><strong>MAC</strong><br><span id="macVal">—</span></div>
-            </div>
-            <p class="muted" style="margin:.8rem 0 0" id="sessionNote">
-              Güvenlik için kimlik bilgileri üçüncü kişilerle paylaşılmaz.
-            </p>
+    <aside class="col-4">
+      <div class="card">
+        <div class="hd"><strong id="sessionTitle">Wi‑Fi Oturum Bilgileri</strong></div>
+        <div class="bd">
+          <div class="kv">
+            <div><strong id="lblSSID">SSID</strong><br><span id="ssidVal">—</span></div>
+            <div><strong id="lblStart">Başlangıç</strong><br><span id="startVal">—</span></div>
+            <div><strong id="lblDuration">Süre</strong><br><span id="durVal">—</span></div>
+            <div><strong id="lblIP">IP</strong><br><span id="ipVal">—</span></div>
+            <div><strong id="lblMAC">MAC</strong><br><span id="macVal">—</span></div>
           </div>
+          <p class="muted" style="margin:.8rem 0 0" id="sessionNote">
+            Güvenlik için kimlik bilgileri üçüncü kişilerle paylaşılmaz.
+          </p>
         </div>
+      </div>
 
-        <div class="card" style="margin-top:12px">
-          <div class="hd"><strong id="contactTitle">İletişim</strong></div>
-          <div class="bd">
-            <p class="muted" style="margin:.3rem 0">
-              Adres: Uzungöl Mah. Fatih Cad. No:25/A, Çaykara/Trabzon 61960<br/>
-              Tel: <a class="link" href="tel:+904626566260">+90 462 656 62 60</a><br/>
-              E‑posta: <a class="link" href="mailto:inan@inankardeslerotel.com">inan@inankardeslerotel.com</a>
-            </p>
-          </div>
+      <div class="card" style="margin-top:12px">
+        <div class="hd"><strong id="contactTitle">İletişim</strong></div>
+        <div class="bd">
+          <p class="muted" style="margin:.3rem 0">
+            Adres: Uzungöl Mah. Fatih Cad. No:25/A, Çaykara/Trabzon 61960<br/>
+            Tel: <a class="link" href="tel:+904626566260">+90 462 656 62 60</a><br/>
+            E‑posta: <a class="link" href="mailto:inan@inankardeslerotel.com">inan@inankardeslerotel.com</a>
+          </p>
         </div>
-      </aside>
-    </div>
+      </div>
+    </aside>
+  </div>
 
-    <div class="footer">
-      <div>© <span id="year"></span> İnan Kardeşler Otel — Tüm hakları saklıdır.</div>
-      <div class="muted">Bu sayfa login sonrası bilgilendirme amaçlıdır.</div>
-    </div>
-  </main>
+  <div class="footer" style="display:flex;justify-content:space-between;gap:10px;margin:20px 0 40px;color:var(--ink-2)">
+    <div>© <span id="year"></span> İnan Kardeşler Otel — Tüm hakları saklıdır.</div>
+    <div class="muted">Bu sayfa login sonrası bilgilendirme amaçlıdır.</div>
+  </div>
+</main>
 
-  <script>
-    /* ===== TR/EN metinler ===== */
-    const I18N = {
-      tr:{
-        heroTitle:"Hoş geldiniz – Wi‑Fi bağlantınız aktif",
-        heroSub:"Restoranımızı keşfedin, bahçedeki kahvaltıya göz atın, canlı destekten bize yazın ve Uzungöl’de yakındaki yerleri inceleyin.",
-        welcomeHd:"Uzungöl’de keyifli bir konaklama dileriz!",
-        connected:"Bağlı",
-        // Etiketler:
-        tagRestaurant:"Restoran", tagSupport:"Canlı Destek", tagBreakfast:"Kahvaltı", tagNearby:"Yakın Yerler", tagMuseum:"Müze",
-        // İçerikler:
-        restTitle:"Yöresel lezzetler",
-        restText:"Tereyağında alabalık, muhlama/kuymak ve günlük menüler sizi bekliyor. → Restoran sayfası",
-        waTitle:"WhatsApp ile bize yazın",
-        waText:"Sorularınız için 7/24 yanıtlıyoruz: +90 532 737 60 10",
-        bfTitle:"Bahçede, dere kenarı",
-        bfText:"Otelin arkasındaki yeşil bahçemizde kahvaltı; gün boyu yiyecek‑içecek servisimiz mevcut.",
-        museumTitle:"Uzungöl Dursun Ali İnan Müzesi",
-        museumText:"Kültür evi, kök‑taş eserleri ve bölge tarihini anlatan üç bölüm. → Detaylar",
-        nearTitle:"Uzungöl çevresinde",
-        nearText:"• Uzungöl göl kenarı – yürüyüş ve manzara\n• Karester Yaylası – seyir noktası (2245 m)",
-        sessTitle:"Wi‑Fi Oturum Bilgileri",
-        sessNote:"Güvenlik için kimlik bilgileri üçüncü kişilerle paylaşılmaz.",
-        contact:"İletişim"
-      },
-      en:{
-        heroTitle:"Welcome – Your Wi‑Fi is active",
-        heroSub:"Explore our restaurant, breakfast in the garden, live support, and nearby sights in Uzungöl.",
-        welcomeHd:"Have a wonderful stay in Uzungöl!",
-        connected:"Connected",
-        // Tags:
-        tagRestaurant:"Restaurant", tagSupport:"Live Support", tagBreakfast:"Breakfast", tagNearby:"Nearby", tagMuseum:"Museum",
-        // Content:
-        restTitle:"Local specialties",
-        restText:"Trout in butter, muhlama/kuymak and daily dishes. → Restaurant page",
-        waTitle:"Chat with us on WhatsApp",
-        waText:"We’re here 24/7: +90 532 737 60 10",
-        bfTitle:"In the garden by the stream",
-        bfText:"Enjoy breakfast in our green garden; food & beverage service is available throughout the day.",
-        museumTitle:"Uzungöl Dursun Ali İnan Museum",
-        museumText:"Three sections featuring a culture house, root‑stone works and regional history. → Details",
-        nearTitle:"Around Uzungöl",
-        nearText:"• Uzungöl lakeside – promenade & views\n• Karester Plateau – viewpoint (2,245 m)",
-        sessTitle:"Wi‑Fi Session Details",
-        sessNote:"For security, identifiers are not shared with third parties.",
-        contact:"Contact"
-      }
-    };
-
-    const $  = s => document.querySelector(s);
-    const $$ = s => document.querySelectorAll(s);
-    const params = new URLSearchParams(location.search);
-    $('#year').textContent = new Date().getFullYear();
-
-    // Parametreler (Hotspot'tan gelebilir)
-    const ssid = params.get('ssid') || 'INAN KARDEŞLER Wi‑Fi';
-    const ap   = params.get('ap') || params.get('ap_name') || params.get('ap_mac') || '—';
-    const ip   = params.get('client_ip') || params.get('ip') || '—';
-    const mac  = params.get('client_mac') || params.get('mac') || '—';
-
-    // UI bağla
-    $('#ssidTxt').textContent = ssid;
-    $('#apTxt').textContent   = ap;
-    $('#ssidVal').textContent = ssid;
-    $('#apVal').textContent   = ap;
-    $('#ipVal').textContent   = ip;
-    $('#macVal').textContent  = mac;
-
-    // Dil uygula
-    function applyLang(lang){
-      document.documentElement.lang = lang;
-      const T = I18N[lang];
-
-      $('#heroTitle').textContent = T.heroTitle;
-      $('#heroSub').textContent   = T.heroSub;
-      $('#hdWelcome').textContent = T.welcomeHd;
-      $('#connectedTag').textContent = T.connected;
-
-      // Etiketler
-      $('#tagRestaurant').textContent = T.tagRestaurant;
-      $('#tagSupport').textContent    = T.tagSupport;
-      $('#tagBreakfast').textContent  = T.tagBreakfast;
-      $('#tagNearby').textContent     = T.tagNearby;
-      $('#tagMuseum').textContent     = T.tagMuseum;
-
-      // Kart içerikleri
-      $('#restTitle').textContent   = T.restTitle;   $('#restText').textContent   = T.restText;
-      $('#waTitle').textContent     = T.waTitle;     $('#waText').textContent     = T.waText;
-      $('#bfTitle').textContent     = T.bfTitle;     $('#bfText').textContent     = T.bfText;
-      $('#museumTitle').textContent = T.museumTitle; $('#museumText').textContent = T.museumText;
-      $('#nearTitle').textContent   = T.nearTitle;   $('#nearText').textContent   = T.nearText;
-
-      // Sağ kolon
-      $('#sessionTitle').textContent = T.sessTitle; $('#sessionNote').textContent = T.sessNote;
-      $('#contactTitle').textContent = T.contact;
-
-      // Buton durumu
-      $('#langTR').setAttribute('aria-pressed', lang==='tr');
-      $('#langEN').setAttribute('aria-pressed', lang==='en');
-    }
-
-    // Otomatik dil: ?lang => localStorage => navigator.languages
-    function detectPreferredLang(){
-      const qp = (params.get('lang') || '').toLowerCase();
-      if(qp.startsWith('tr')) return 'tr';
-      if(qp.startsWith('en')) return 'en';
-      const saved = localStorage.getItem('wifi_lang_ik');
-      if(saved==='tr' || saved==='en') return saved;
-      const langs = navigator.languages || [navigator.language || ''];
-      if(langs.some(l => (l || '').toLowerCase().startsWith('tr'))) return 'tr';
-      return 'en';
-    }
-
-    const initialLang = detectPreferredLang();
-    applyLang(initialLang);
-    localStorage.setItem('wifi_lang_ik', initialLang);
-
-    // Manuel seçim (kalıcı)
-    $('#langTR').addEventListener('click', ()=>{ applyLang('tr'); localStorage.setItem('wifi_lang_ik','tr'); });
-    $('#langEN').addEventListener('click', ()=>{ applyLang('en'); localStorage.setItem('wifi_lang_ik','en'); });
-  </script>
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-5G6DT6W');</script>
-<!-- End Google Tag Manager -->
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-4663443-1"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  const I18N = {
+    tr:{
+      heroTitle:"Hoş geldiniz – Wi‑Fi bağlantınız aktif",
+      heroSub:"Restoranımızı keşfedin, bahçedeki kahvaltıya göz atın, canlı destekten bize yazın ve Uzungöl’de yakındaki yerleri inceleyin.",
+      welcomeHd:"Uzungöl’de keyifli bir konaklama dileriz!", connected:"Bağlı",
+      tagRestaurant:"Restoran", tagSupport:"Canlı Destek", tagBreakfast:"Kahvaltı", tagNearby:"Yakın Yerler", tagMuseum:"Müze",
+      restTitle:"Yöresel lezzetler", restText:"Tereyağında alabalık, muhlama/kuymak ve günlük menüler. → Restoran sayfası",
+      waTitle:"WhatsApp ile bize yazın", waText:"Sorularınız için 7/24 yanıtlıyoruz: +90 532 737 60 10",
+      bfTitle:"Bahçede, dere kenarı", bfText:"Yeşil bahçemizde kahvaltı; gün boyu yiyecek‑içecek servisi.",
+      museumTitle:"Uzungöl Dursun Ali İnan Müzesi", museumText:"Kültür evi, kök‑taş eserleri ve bölge tarihi. → Detaylar",
+      nearTitle:"Uzungöl çevresinde", nearText:"• Uzungöl göl kenarı • Karester Yaylası (2245 m)",
+      sessTitle:"Wi‑Fi Oturum Bilgileri", sessNote:"Güvenlik için kimlik bilgileri üçüncü kişilerle paylaşılmaz.",
+      lblSSID:"SSID", lblStart:"Başlangıç", lblDuration:"Süre", lblIP:"IP", lblMAC:"MAC",
+      btnTR:"TR", btnEN:"EN"
+    },
+    en:{
+      heroTitle:"Welcome – Your Wi‑Fi is active",
+      heroSub:"Explore our restaurant, breakfast in the garden, live support, and nearby sights in Uzungöl.",
+      welcomeHd:"Have a wonderful stay in Uzungöl!", connected:"Connected",
+      tagRestaurant:"Restaurant", tagSupport:"Live Support", tagBreakfast:"Breakfast", tagNearby:"Nearby", tagMuseum:"Museum",
+      restTitle:"Local specialties", restText:"Trout in butter, muhlama/kuymak and daily dishes. → Restaurant page",
+      waTitle:"Chat with us on WhatsApp", waText:"We’re here 24/7: +90 532 737 60 10",
+      bfTitle:"In the garden by the stream", bfText:"Enjoy breakfast in our green garden; all‑day F&B service.",
+      museumTitle:"Uzungöl Dursun Ali İnan Museum", museumText:"Culture house, root‑stone works and regional history. → Details",
+      nearTitle:"Around Uzungöl", nearText:"• Uzungöl lakeside • Karester Plateau (2,245 m)",
+      sessTitle:"Wi‑Fi Session Details", sessNote:"For security, identifiers are not shared with third parties.",
+      lblSSID:"SSID", lblStart:"Start", lblDuration:"Duration", lblIP:"IP", lblMAC:"MAC",
+      btnTR:"TR", btnEN:"EN"
+    }
+  };
 
-  gtag('config', 'UA-4663443-1');
+  const $ = s => document.querySelector(s);
+  const params = new URLSearchParams(location.search);
+  $('#year').textContent = new Date().getFullYear();
+
+  const ssid = params.get('ssid') || 'InanKardeslerHotel Wi‑Fi';
+  const ip   = params.get('client_ip') || params.get('ip') || '—';
+  const mac  = params.get('client_mac') || params.get('mac') || '—';
+
+  const startAt = new Date();
+  function fmtDT(lang){ return new Intl.DateTimeFormat(lang==='tr'?'tr-TR':'en-GB', { dateStyle:'medium', timeStyle:'short' }); }
+  function fmtDur(ms, lang){
+    let s = Math.max(0, Math.floor(ms/1000));
+    const h = Math.floor(s/3600); s%=3600; const m = Math.floor(s/60); s%=60;
+    return lang==='tr' ? (h?`${h} sa `:'')+(m?`${m} dk `:'')+`${s} sn` : (h?`${h} h `:'')+(m?`${m} min `:'')+`${s} s`;
+  }
+
+  function detectPreferredLang(){
+    const qp=(params.get('lang')||'').toLowerCase();
+    if(qp.startsWith('tr')) return 'tr';
+    if(qp.startsWith('en')) return 'en';
+    const saved=localStorage.getItem('wifi_lang_ik'); if(saved==='tr'||saved==='en') return saved;
+    const langs=navigator.languages||[navigator.language||'']; if(langs.some(l=>(l||'').toLowerCase().startsWith('tr'))) return 'tr';
+    return 'en';
+  }
+  let currentLang = detectPreferredLang();
+  let T = I18N[currentLang];
+
+  function applyLang(lang){
+    currentLang=lang; T=I18N[lang]; document.documentElement.lang=lang;
+
+    $('#langTR').textContent=T.btnTR; $('#langEN').textContent=T.btnEN;
+    $('#langTR').setAttribute('aria-pressed', lang==='tr');
+    $('#langEN').setAttribute('aria-pressed', lang==='en');
+
+    $('#heroTitle').textContent=T.heroTitle; $('#heroSub').textContent=T.heroSub;
+    $('#hdWelcome').textContent=T.welcomeHd; $('#connectedTag').textContent=T.connected;
+
+    $('#tagRestaurant').textContent=T.tagRestaurant; $('#tagSupport').textContent=T.tagSupport;
+    $('#tagBreakfast').textContent=T.tagBreakfast; $('#tagNearby').textContent=T.tagNearby; $('#tagMuseum').textContent=T.tagMuseum;
+
+    $('#restTitle').textContent=T.restTitle; $('#restText').textContent=T.restText;
+    $('#waTitle').textContent=T.waTitle; $('#waText').textContent=T.waText;
+    $('#bfTitle').textContent=T.bfTitle; $('#bfText').textContent=T.bfText;
+    $('#museumTitle').textContent=T.museumTitle; $('#museumText').textContent=T.museumText;
+    $('#nearTitle').textContent=T.nearTitle; $('#nearText').textContent=T.nearText;
+
+    $('#sessionTitle').textContent=T.sessTitle; $('#sessionNote').textContent=T.sessNote;
+    $('#lblSSID').textContent=T.lblSSID; $('#lblStart').textContent=T.lblStart; $('#lblDuration').textContent=T.lblDuration; $('#lblIP').textContent=T.lblIP; $('#lblMAC').textContent=T.lblMAC;
+
+    $('#ssidTxt').textContent=ssid;
+    $('#ssidVal').textContent=ssid; $('#ipVal').textContent=ip; $('#macVal').textContent=mac;
+    $('#startVal').textContent = fmtDT(lang).format(startAt);
+  }
+
+  applyLang(currentLang);
+  localStorage.setItem('wifi_lang_ik', currentLang);
+
+  setInterval(()=>{ document.querySelector('#durVal').textContent = fmtDur(Date.now()-startAt, currentLang); }, 1000);
+
+  document.querySelector('#langTR').addEventListener('click', ()=>{ applyLang('tr'); localStorage.setItem('wifi_lang_ik','tr'); });
+  document.querySelector('#langEN').addEventListener('click', ()=>{ applyLang('en'); localStorage.setItem('wifi_lang_ik','en'); });
 </script>
 </body>
 </html>
