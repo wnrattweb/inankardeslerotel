@@ -387,6 +387,7 @@
         }
       }
       if (which === "dates") {
+        sel.hover = null;
         if (part === "out") { sel.a = st.in; sel.b = null; } else { sel.a = null; sel.b = null; }
         view = new Date(st.in.getFullYear(), st.in.getMonth(), 1);
         drawCal();
@@ -438,13 +439,21 @@
       html += "</div>";
       var n = sel.a && endPreview ? nightsBetween(sel.a, endPreview) : 0;
       html += '<div class="cal__foot"><span class="cal__summary">' + (sel.a ? fmt(sel.a) : "—") + " → " + (endPreview ? fmt(endPreview) : "—") + (n ? " · <b>" + n + " " + (n === 1 ? T.night : T.nights) + "</b>" : "") + '</span>' +
-        '<button type="button" class="btn btn--dark btn--sm" data-cal-done' + (sel.a && sel.b ? "" : " disabled") + '>' + T.apply + '</button></div>';
+        '<button type="button" class="btn btn--dark btn--sm" data-cal-done>' + T.apply + '</button></div>';
       popDates.innerHTML = html;
     }
     popDates.addEventListener("click", function (e) {
       var nav = e.target.closest("[data-cal-nav]");
       if (nav) { view = new Date(view.getFullYear(), view.getMonth() + +nav.getAttribute("data-cal-nav"), 1); drawCal(); return; }
-      if (e.target.closest("[data-cal-done]")) { close(); return; }
+      if (e.target.closest("[data-cal-done]")) {
+        // "Tamam": seçimi her durumda uygula (yalnız giriş seçildiyse 1 gece varsay)
+        if (sel.a) {
+          var end = sel.b || (sel.hover && sel.hover > sel.a ? sel.hover : addDays(sel.a, 1));
+          if (end > maxDate) end = maxDate;
+          st.in = sel.a; st.out = end; saveState(st); render();
+        }
+        close(); return;
+      }
       var b = e.target.closest("[data-date]");
       if (!b || b.disabled) return;
       var d = parseIso(b.getAttribute("data-date"));
@@ -454,7 +463,11 @@
         setTimeout(close, 260);
       }
     });
-    popDates.addEventListener("mouseover", function (e) {
+    // Aralık önizlemesi yalnızca gerçek fare için: dokunmatik ekranda (özellikle iPhone Safari)
+    // üzerine-gelme sırasında takvimi yeniden çizmek dokunuşu yutar ve tarih seçilmez.
+    var finePointer = window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    popDates.addEventListener("pointerover", function (e) {
+      if (!finePointer || e.pointerType !== "mouse") return;
       if (!sel.a || sel.b) return;
       var b = e.target.closest("[data-date]");
       if (!b) return;
