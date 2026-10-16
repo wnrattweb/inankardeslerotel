@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>İnan Kardeşler Otel Wi‑Fi | Hoş Geldiniz</title>
-<meta name="description" content="Wi‑Fi oturumunuz aktif. Restoran, kahvaltı, canlı destek, Uzungöl Müzesi ve yakın yerler.">
+<meta name="description" content="İnan Kardeşler Otel karşılama sayfası. Restoran, kahvaltı, canlı destek, Uzungöl Müzesi ve yakın yerler.">
 <meta name="robots" content="noindex">
 <meta name="theme-color" content="#13302a">
 <script>
@@ -15,7 +15,11 @@
     var d = { q: location.search, t: Date.now() };
     try {
       if (d.q) sessionStorage.setItem("ik_wifi", JSON.stringify(d));
-      else d = JSON.parse(sessionStorage.getItem("ik_wifi") || "null") || d;
+      else {
+        var old = JSON.parse(sessionStorage.getItem("ik_wifi") || "null");
+        if (old && typeof old.t === "number" && Date.now() >= old.t && Date.now()-old.t < 900000) d = old;
+        else sessionStorage.removeItem("ik_wifi");
+      }
     } catch (e) {}
     window.IK_WIFI = d;
     if (location.search && history.replaceState) {
@@ -23,6 +27,17 @@
     }
   })();
 </script>
+<!-- Merkezi girişin sınırlı, salt okunur bağlantı anahtarını izleme kodlarından önce adres çubuğundan kaldır. -->
+<script>
+(function(){
+  var p=new URLSearchParams(location.hash.slice(1)),t=p.get('utrnet_welcome');
+  if(t){
+    try{if(t.length<=4096)sessionStorage.setItem('utrnet_welcome_view:inankardeslerhotel:'+location.pathname,JSON.stringify({token:t,at:Date.now()}));}catch(e){}
+    try{var a=p.get('utrnet_anchor');history.replaceState(null,'',location.pathname+location.search+(a?'#'+a:''));}catch(e){}
+  }
+})();
+</script>
+<script defer src="https://portal.utrnet.com/utrnet-welcome-session.js" data-tenant="inankardeslerhotel" data-fallback="legacy-wifi-session"></script>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5G6DT6W');</script>
 <!-- End Google Tag Manager -->
@@ -46,13 +61,15 @@
     mac / client_mac      → MAC adresi          (MikroTik: $(mac))
     ssid                  → ağ adı (yoksa "InanKardeslerHotel")
     lang                  → tr / en
-    user / username       → kullanıcı adı       (MikroTik: $(username))
     uptime                → oturum süresi       (MikroTik: $(uptime), örn. 12m40s)
     left                  → kalan süre          (MikroTik: $(session-time-left))
     orig / dst            → misafirin gitmek istediği adres (MikroTik: $(link-orig))
     status / logout       → router durum / çıkış linkleri   ($(link-status), $(link-logout))
   Örnek: wifiwelcome.html?ip=10.5.50.123&mac=3C:22:FB:9A:41:07&uptime=12m40s
-  Gizlilik: parametreler okunduktan sonra adres çubuğundan silinir; GTM/Analytics IP/MAC görmez.
+  Merkezi portal: doğrulanmış bağlantı bilgileri UTRNET iframe üzerinden gösterilir.
+  Yalnız cihazdan aktarılan eski parametreler doğrulanmış oturum sayılmaz.
+  Uptime yoksa başlangıç ve süre tahmin edilmez; eski süre ölçümü 120 saniye sonra durur.
+  Parametreler izleme kodlarından önce adres çubuğundan kaldırılır; bu, ilk HTTP isteğinin sunucu kayıtlarını değiştirmez.
   Ölçüm: GTM-5G6DT6W + GA4 (G-L6LXEV712G); tıklamalar GA4'e "wifi_click" olayı (wifi_link) olarak gider.
 -->
 <style>
@@ -255,7 +272,7 @@
   <div class="wrap hero__in">
     <div class="wifi-badge" aria-hidden="true"><svg class="icon"><use href="#i-wifi"/></svg></div>
     <p class="kicker"><span class="live" aria-hidden="true"></span><span data-i18n="kicker">Wi‑Fi · İnan Kardeşler Otel</span></p>
-    <h1><span data-i18n="h1a">Hoş geldiniz</span><em data-i18n="h1b">Wi‑Fi bağlantınız aktif</em></h1>
+    <h1><span data-i18n="h1a">Hoş geldiniz</span><em data-i18n="h1b">Keyifli bir konaklama dileriz</em></h1>
     <p class="hero__sub" data-i18n="heroSub">Restoranımızı keşfedin, bahçedeki kahvaltıya göz atın, canlı destekten bize yazın ve Uzungöl’de yakındaki yerleri inceleyin.</p>
     <div class="hero__actions">
       <a class="btn btn--primary" id="continueBtn" data-track="continue" rel="noopener" hidden><span data-i18n="continue">Devam edin</span><span class="btn__host" id="continueHost"></span><svg class="icon"><use href="#i-arrow"/></svg></a>
@@ -327,10 +344,11 @@
   </div>
 
   <div class="col-side">
-    <section class="card session" aria-labelledby="sessTitle">
+    <div id="utrnet-wifi-session" class="card" hidden></div>
+    <section id="legacy-wifi-session" class="card session" aria-labelledby="sessTitle">
       <div class="card__hd">
         <h2 id="sessTitle" data-i18n="sessTitle">Wi‑Fi Oturum Bilgileri</h2>
-        <span class="status"><span class="live" aria-hidden="true"></span><span data-i18n="connected">Bağlı</span></span>
+        <span class="status" style="background:var(--cream);color:var(--muted)"><span data-i18n="connected">Bilgilendirme</span></span>
       </div>
       <dl class="kv">
         <div><dt>SSID</dt><dd id="ssidVal">—</dd></div>
@@ -341,7 +359,7 @@
         <div id="userRow" hidden><dt data-i18n="lblUser">Kullanıcı</dt><dd id="userVal"></dd></div>
         <div id="leftRow" hidden><dt data-i18n="lblLeft">Kalan süre</dt><dd id="leftVal"></dd></div>
       </dl>
-      <p class="note"><svg class="icon"><use href="#i-shield"/></svg><span data-i18n="sessNote">Güvenlik için kimlik bilgileri üçüncü kişilerle paylaşılmaz.</span></p>
+      <p class="note"><svg class="icon"><use href="#i-shield"/></svg><span data-i18n="sessNote">Merkezi giriş doğrulaması yoksa yalnız cihazın aktardığı bilgiler gösterilir; bu alan bağlantıyı doğrulamaz.</span></p>
       <div class="sess-links" id="sessLinks" hidden>
         <a class="chip-link" id="statusLink" data-track="session_status" hidden><svg class="icon"><use href="#i-activity"/></svg><span data-i18n="status">Oturum durumu</span></a>
         <a class="chip-link chip-link--danger" id="logoutLink" data-track="logout" hidden><svg class="icon"><use href="#i-power"/></svg><span data-i18n="logout">Bağlantıyı kes</span></a>
@@ -381,7 +399,7 @@
   var I18N = {
     tr: {
       brandSub: "Otel · Restaurant · Uzungöl", kicker: "Wi‑Fi · İnan Kardeşler Otel",
-      h1a: "Hoş geldiniz", h1b: "Wi‑Fi bağlantınız aktif",
+      h1a: "Hoş geldiniz", h1b: "Keyifli bir konaklama dileriz",
       heroSub: "Restoranımızı keşfedin, bahçedeki kahvaltıya göz atın, canlı destekten bize yazın ve Uzungöl’de yakındaki yerleri inceleyin.",
       "continue": "Devam edin", website: "Otel web sitesi",
       recepTitle: "Resepsiyon", recepText: "Oda telefonundan 0’ı tuşlayın",
@@ -394,15 +412,15 @@
       tagMuseum: "Müze", museumTitle: "Uzungöl Dursun Ali İnan Müzesi", museumText: "Kültür evi, kök‑taş eserleri ve bölge tarihi.", details: "Detaylar",
       tagNearby: "Yakın Yerler", nearTitle: "Uzungöl çevresinde",
       near1t: "Uzungöl göl kenarı", near1s: "Yürüyüş ve manzara", near2t: "Karester Yaylası", near2s: "Seyir noktası (2245 m)",
-      sessTitle: "Wi‑Fi Oturum Bilgileri", connected: "Bağlı", lblStart: "Başlangıç", lblDuration: "Süre", lblUser: "Kullanıcı", lblLeft: "Kalan süre",
-      sessNote: "Güvenlik için kimlik bilgileri üçüncü kişilerle paylaşılmaz.", status: "Oturum durumu", logout: "Bağlantıyı kes",
+      sessTitle: "Wi‑Fi Oturum Bilgileri", connected: "Bilgilendirme", lblStart: "Başlangıç", lblDuration: "Süre", lblUser: "Kullanıcı", lblLeft: "Kalan süre",
+      sessNote: "Merkezi giriş doğrulaması yoksa yalnız cihazın aktardığı bilgiler gösterilir; bu alan bağlantıyı doğrulamaz.", status: "Oturum durumu", logout: "Bağlantıyı kes",
       contactTitle: "İletişim", lblRecep: "Resepsiyon", recepNo: "Resepsiyon Numarası: 0", lblTel: "Telefon", lblMail: "E‑posta", lblAddr: "Adres",
       book: "Online Rezervasyon", rights: "Tüm hakları saklıdır.", footNote: "Bu sayfa login sonrası bilgilendirme amaçlıdır.",
       h: "sa", m: "dk", s: "sn", d: "g"
     },
     en: {
       brandSub: "Hotel · Restaurant · Uzungol", kicker: "Wi‑Fi · İnan Kardeşler Hotel",
-      h1a: "Welcome", h1b: "Your Wi‑Fi is active",
+      h1a: "Welcome", h1b: "Enjoy your stay",
       heroSub: "Explore our restaurant, breakfast in the garden, live support, and nearby sights in Uzungöl.",
       "continue": "Continue", website: "Hotel website",
       recepTitle: "Reception", recepText: "Dial 0 from your room phone",
@@ -415,8 +433,8 @@
       tagMuseum: "Museum", museumTitle: "Uzungöl Dursun Ali İnan Museum", museumText: "Culture house, root‑stone works and regional history.", details: "Details",
       tagNearby: "Nearby", nearTitle: "Around Uzungöl",
       near1t: "Uzungöl lakeside", near1s: "Walks and views", near2t: "Karester Plateau", near2s: "Viewpoint (2,245 m)",
-      sessTitle: "Wi‑Fi Session Details", connected: "Connected", lblStart: "Start", lblDuration: "Duration", lblUser: "User", lblLeft: "Time left",
-      sessNote: "For security, identifiers are not shared with third parties.", status: "Session status", logout: "Disconnect",
+      sessTitle: "Wi‑Fi Session Details", connected: "Information", lblStart: "Start", lblDuration: "Duration", lblUser: "User", lblLeft: "Time left",
+      sessNote: "Without central sign-in verification, only details provided by the device are shown; this panel does not verify connectivity.", status: "Session status", logout: "Disconnect",
       contactTitle: "Contact", lblRecep: "Reception", recepNo: "Reception Number: 0", lblTel: "Phone", lblMail: "E‑mail", lblAddr: "Address",
       book: "Book Online", rights: "All rights reserved.", footNote: "This page is shown for information after login.",
       h: "h", m: "min", s: "s", d: "d"
@@ -450,7 +468,7 @@
   var user = param("username", "user");
   var leftMs = parseDur(param("left", "session-time-left"));
   var upMs = parseDur(param("uptime"));
-  var startAt = new Date(W.t - (upMs || 0));
+  var startAt = upMs != null ? new Date(W.t - upMs) : null;
   var endAt = leftMs != null ? W.t + leftMs : null;
   var orig = safeUrl(param("orig", "dst", "link-orig"));
   var statusUrl = safeUrl(param("status", "link-status"));
@@ -477,8 +495,9 @@
   var lang = detectLang(), T = I18N[lang];
 
   function tick() {
-    $("#durVal").textContent = fmtDur(Date.now() - startAt.getTime(), T);
-    if (endAt) $("#leftVal").textContent = fmtDur(endAt - Date.now(), T);
+    var recent = Date.now() >= W.t && Date.now() - W.t < 120000;
+    $("#durVal").textContent = startAt && recent ? fmtDur(Date.now() - startAt.getTime(), T) : "—";
+    if (endAt) $("#leftVal").textContent = recent ? fmtDur(endAt - Date.now(), T) : "—";
   }
 
   function apply(l) {
@@ -490,7 +509,7 @@
     });
     $("#langTR").setAttribute("aria-pressed", l === "tr");
     $("#langEN").setAttribute("aria-pressed", l === "en");
-    $("#startVal").textContent = fmtDT(l).format(startAt);
+    $("#startVal").textContent = startAt ? fmtDT(l).format(startAt) : "—";
     tick();
     try { localStorage.setItem("wifi_lang_ik", l); } catch (e) {}
   }
@@ -500,7 +519,7 @@
   $("#ssidVal").textContent = ssid;
   $("#ipVal").textContent = ip;
   $("#macVal").textContent = mac;
-  if (user) { $("#userVal").textContent = user; $("#userRow").hidden = false; }
+  // Router kullanıcı adı misafir ekranında gösterilmez.
   if (endAt) $("#leftRow").hidden = false;
   if (orig && orig.hostname !== location.hostname) {
     var c = $("#continueBtn");
