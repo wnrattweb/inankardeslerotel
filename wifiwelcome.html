@@ -1,336 +1,526 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>İnan Kardeşler Otel Wi‑Fi | Hoş Geldiniz</title>
-<meta name="description" content="Wi‑Fi oturumunuz aktif. Restoran, kahvaltı, canlı destek, Uzungöl Müzesi ve yakın yerler." />
-<meta name="color-scheme" content="light dark" />
+<meta name="description" content="Wi‑Fi oturumunuz aktif. Restoran, kahvaltı, canlı destek, Uzungöl Müzesi ve yakın yerler.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#13302a">
+<script>
+  /* MikroTik'ten gelen bilgileri (IP, MAC…) oku ve adres çubuğundan HEMEN sil.
+     Google Tag Manager / Analytics bundan sonra yüklenir; bu bilgileri hiçbir zaman görmez.
+     Bilgiler yalnızca bu tarayıcı oturumunda saklanır (sayfa yenilenirse kaybolmasın diye). */
+  (function () {
+    var d = { q: location.search, t: Date.now() };
+    try {
+      if (d.q) sessionStorage.setItem("ik_wifi", JSON.stringify(d));
+      else d = JSON.parse(sessionStorage.getItem("ik_wifi") || "null") || d;
+    } catch (e) {}
+    window.IK_WIFI = d;
+    if (location.search && history.replaceState) {
+      try { history.replaceState(null, "", location.pathname + location.hash); } catch (e) {}
+    }
+  })();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5G6DT6W');</script>
+<!-- End Google Tag Manager -->
+<!-- Google Analytics 4 (adres temizlendikten sonra yüklenir: IP/MAC GA4'e gitmez) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L6LXEV712G"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L6LXEV712G');</script>
+<link rel="icon" href="https://inankardeslerotel.com/images/img/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="https://inankardeslerotel.com/images/img/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="https://inankardeslerotel.com/images/img/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="192x192" href="https://inankardeslerotel.com/images/img/android-icon-192x192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://inankardeslerotel.com/images/img/apple-icon-180x180.png">
+<link rel="manifest" href="https://inankardeslerotel.com/images/img/manifest.json">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Manrope:wght@400;500;600;700;800&display=swap">
+<!--
+  İnan Kardeşler Otel — Wi‑Fi karşılama sayfası (MikroTik hotspot girişinden sonra açılır)
+
+  Desteklenen adres parametreleri (hepsi isteğe bağlı):
+    ip / client_ip        → IP adresi           (MikroTik: $(ip))
+    mac / client_mac      → MAC adresi          (MikroTik: $(mac))
+    ssid                  → ağ adı (yoksa "InanKardeslerHotel")
+    lang                  → tr / en
+    user / username       → kullanıcı adı       (MikroTik: $(username))
+    uptime                → oturum süresi       (MikroTik: $(uptime), örn. 12m40s)
+    left                  → kalan süre          (MikroTik: $(session-time-left))
+    orig / dst            → misafirin gitmek istediği adres (MikroTik: $(link-orig))
+    status / logout       → router durum / çıkış linkleri   ($(link-status), $(link-logout))
+  Örnek: wifiwelcome.html?ip=10.5.50.123&mac=3C:22:FB:9A:41:07&uptime=12m40s
+  Gizlilik: parametreler okunduktan sonra adres çubuğundan silinir; GTM/Analytics IP/MAC görmez.
+  Ölçüm: GTM-5G6DT6W + GA4 (G-L6LXEV712G); tıklamalar GA4'e "wifi_click" olayı (wifi_link) olarak gider.
+-->
 <style>
   :root{
-    --brand:#E87722; --accent:#C89B3C;
-    --ink:#0E1217; --ink-2:#5B6676;
-    --bg:#0B0F14; --card:#fff; --stroke:rgba(2,6,23,.12);
-    --safe-l:max(16px, env(safe-area-inset-left));
-    --safe-r:max(16px, env(safe-area-inset-right));
+    --ink:#15201d; --text:#3a403c; --muted:#6c706a; --line:rgba(21,32,29,.12);
+    --paper:#fbf8f3; --cream:#f4ede2; --sand:#e8dccb;
+    --forest:#13302a; --forest-2:#1b3f37; --gold:#c9a56f; --copper:#b45f2b;
+    --brand:#e8702a; --brand-dark:#c95b1a; --wa:#25d366; --wa-dark:#128c4b; --ok:#3ecf8e;
+    --serif:"Cormorant Garamond",Georgia,"Times New Roman",serif;
+    --sans:"Manrope",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+    --r:18px; --shadow:0 24px 50px -24px rgba(19,48,42,.45);
+    --gut:max(16px, env(safe-area-inset-left));
   }
-  @media (prefers-color-scheme: light){
-    :root{ --bg:#F7FAFC; --ink:#0E1217; --ink-2:#475569; --stroke:rgba(2,6,23,.10) }
-  }
-  *{box-sizing:border-box} html,body{height:100%}
-  body{
-    margin:0; color:var(--ink);
-    font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
-    background:
-      radial-gradient(900px 560px at 100% 0%, #0c141d 0%, transparent 55%),
-      radial-gradient(900px 560px at 0% 100%, #101a24 0%, transparent 55%),
-      linear-gradient(180deg, var(--bg), #131a23);
-    min-height:100svh;
-  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;font-family:var(--sans);font-size:15.5px;line-height:1.6;color:var(--text);background:var(--paper);-webkit-font-smoothing:antialiased}
+  img,svg{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  button{font:inherit;color:inherit;cursor:pointer;background:none;border:0;padding:0}
+  h1,h2,h3{margin:0;color:var(--ink);line-height:1.15;font-variant-numeric:lining-nums}
+  p{margin:0}
+  [hidden]{display:none!important}
+  :focus-visible{outline:2px solid var(--brand);outline-offset:3px;border-radius:6px}
+  .icon{width:1.15em;height:1.15em;flex:none;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+  .icon--fill{fill:currentColor;stroke:none}
+  .wrap{width:100%;max-width:1120px;margin-inline:auto;padding-inline:var(--gut)}
+  .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.92em;letter-spacing:.02em}
 
-  /* ÜST BAR (AP kaldırıldı) */
-  .top{
-    position:sticky; top:0; z-index:10;
-    backdrop-filter: blur(10px) saturate(140%);
-    background: color-mix(in oklab, #000 12%, transparent);
-    border-bottom:1px solid var(--stroke);
-  }
-  .top-inner{
-    width:min(1120px, 92vw);
-    margin-inline:auto;
-    padding-block:12px;
-    padding-left: var(--safe-l);
-    padding-right: var(--safe-r);
-    display:flex; align-items:center; gap:12px;
-    flex-wrap:wrap;
-  }
-  .brand{ display:flex; align-items:center; gap:12px; text-decoration:none; color:inherit }
-  .brand img{ height:30px }
-  .top-pills{ display:flex; align-items:center; gap:8px; margin-left:auto }
-  .pill{
-    display:inline-flex; align-items:center; gap:8px; border:1px solid var(--stroke);
-    padding:6px 10px; border-radius:999px; background:#fff; color:#0a0f14; font-size:13px
-  }
-  .lang{ display:flex; align-items:center; gap:8px }
-  .lang button{
-    border:1px solid var(--stroke); cursor:pointer; font-weight:700; border-radius:999px;
-    padding:8px 14px; min-width:46px; background:#fff; color:#0b0f14;
-    box-shadow: 0 1px 2px rgba(0,0,0,.08);
-  }
-  .lang button[aria-pressed="true"]{
-    background:linear-gradient(90deg,var(--accent), color-mix(in oklab, var(--accent), black 12%));
-    color:#fff; border-color: color-mix(in oklab, var(--accent) 35%, white);
-    box-shadow: 0 2px 6px rgba(0,0,0,.18);
-  }
-  @media (max-width:560px){ .top-pills{ width:100%; justify-content:flex-end } }
+  /* Üst bar */
+  .bar{position:sticky;top:0;z-index:20;background:rgba(19,48,42,.94);-webkit-backdrop-filter:blur(12px) saturate(1.3);backdrop-filter:blur(12px) saturate(1.3);color:#fff;border-bottom:1px solid rgba(255,255,255,.1)}
+  .bar__in{display:flex;align-items:center;gap:12px;min-height:64px;padding-block:8px}
+  .brand{display:flex;align-items:center;gap:10px;min-width:0}
+  .brand__mark{width:40px;height:40px;flex:none}
+  .brand__text{display:flex;flex-direction:column;line-height:1;min-width:0}
+  .brand__name{font-family:var(--serif);font-size:22px;font-weight:700;white-space:nowrap}
+  .brand__sub{margin-top:5px;font-size:9px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;opacity:.75;white-space:nowrap}
+  .bar__right{margin-left:auto;display:flex;align-items:center;gap:8px}
+  .ssid{display:inline-flex;align-items:center;gap:7px;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);font-size:12.5px;font-weight:700;max-width:220px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .ssid .icon{color:var(--ok);width:15px;height:15px}
+  .lang{display:inline-flex;border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:2px}
+  .lang button{padding:5px 11px;border-radius:999px;font-weight:800;font-size:12px;letter-spacing:.06em;opacity:.75}
+  .lang button[aria-pressed="true"]{background:#fff;color:var(--ink);opacity:1}
 
   /* Hero */
-  .hero{ position:relative; border-bottom:1px solid var(--stroke); background:#0b0f14; isolation:isolate; overflow:hidden }
-  .hero img.bg{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.42; filter:saturate(110%) contrast(105%) }
-  .shade{ position:absolute; inset:0; background:linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.25) 25%,rgba(0,0,0,.60)) }
-  .container{ width:min(1120px,92vw); margin-inline:auto; padding-left: var(--safe-l); padding-right: var(--safe-r); }
-  .hero .content{ position:relative; z-index:1; padding:clamp(24px,5vw,56px) 0; color:#fff }
-  .kicker{ letter-spacing:.25em; font-weight:700; opacity:.9; font-size:12px }
-  h1{ margin:.4rem 0; font-size: clamp(26px,4vw,42px); line-height:1.15; color:#fff }
-  .sub{ margin:.3rem 0 1rem; max-width:64ch; color:#e7ecef }
+  .hero{position:relative;isolation:isolate;overflow:hidden;color:#fff;background:var(--forest)}
+  .hero__bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:35% 50%;z-index:-2;animation:zoom 14s ease-out forwards}
+  @keyframes zoom{from{transform:scale(1.1)}to{transform:scale(1)}}
+  .hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(8,22,19,.55),rgba(8,22,19,.35) 40%,rgba(8,22,19,.85))}
+  .hero__in{padding-top:clamp(40px,8vw,84px);padding-bottom:clamp(96px,12vw,140px)}
+  .kicker{display:inline-flex;align-items:center;gap:10px;font-size:11.5px;font-weight:800;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+  .live{position:relative;width:9px;height:9px;border-radius:50%;background:var(--ok);flex:none}
+  .live::after{content:"";position:absolute;inset:-5px;border-radius:50%;border:2px solid var(--ok);animation:ping 2s ease-out infinite}
+  @keyframes ping{0%{transform:scale(.6);opacity:.9}100%{transform:scale(1.6);opacity:0}}
+  .wifi-badge{position:relative;width:68px;height:68px;margin-bottom:22px;border-radius:50%;display:grid;place-items:center;color:#fff;background:linear-gradient(145deg,#3ecf8e,#1f9d66);box-shadow:0 14px 34px -10px rgba(62,207,142,.7)}
+  .wifi-badge .icon{width:34px;height:34px;stroke-width:2.2}
+  .wifi-badge::before,.wifi-badge::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid rgba(62,207,142,.65);animation:ring 2.6s ease-out infinite}
+  .wifi-badge::after{animation-delay:1.3s}
+  @keyframes ring{0%{transform:scale(1);opacity:.85}100%{transform:scale(1.85);opacity:0}}
+  @media (max-width:600px){.wifi-badge{width:56px;height:56px;margin-bottom:18px}.wifi-badge .icon{width:28px;height:28px}}
+  .hero h1{margin-top:16px;color:#fff;font-family:var(--serif);font-weight:600;font-size:clamp(40px,7vw,72px);line-height:1.02;letter-spacing:-.01em}
+  .hero h1 em{display:block;font-style:italic;font-weight:500;color:#f6d9b9;font-size:.62em;margin-top:6px}
+  .hero__sub{margin-top:16px;max-width:620px;font-size:clamp(15px,1.6vw,17.5px);color:rgba(255,255,255,.88)}
+  .hero__actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:48px;padding:0 22px;border-radius:999px;font-weight:800;font-size:13px;letter-spacing:.06em;text-transform:uppercase;transition:background .2s,transform .2s,border-color .2s;max-width:100%}
+  .btn:hover{transform:translateY(-1px)}
+  .btn .icon{width:17px;height:17px}
+  .btn--primary{background:var(--brand);color:#fff;box-shadow:0 12px 26px -12px rgba(232,112,42,.8)}
+  .btn--primary:hover{background:var(--brand-dark)}
+  .btn--ghost{border:1px solid rgba(255,255,255,.5);color:#fff}
+  .btn--ghost:hover{background:rgba(255,255,255,.12);border-color:#fff}
+  .btn__host{text-transform:none;letter-spacing:0;font-weight:600;padding:3px 10px;border-radius:999px;background:rgba(255,255,255,.18);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:170px}
 
-  /* Grid & kartlar */
-  .grid{ display:grid; grid-template-columns: repeat(12, 1fr); gap:16px; padding:20px 0 28px }
-  .col-8{ grid-column: span 8 } .col-4{ grid-column: span 4 }
-  @media (max-width: 960px){ .col-8,.col-4{ grid-column:1 / -1 } }
-  .card{
-    background:var(--card);
-    border:1px solid color-mix(in oklab, var(--ink) 10%, #e9eef5);
-    border-radius:16px; overflow:hidden; box-shadow:0 8px 24px rgba(0,0,0,.08)
+  /* Düzen */
+  .layout{display:flex;flex-direction:column;gap:18px;margin-top:-72px;position:relative;z-index:2;padding-bottom:40px}
+  .col-main,.col-side{display:contents}
+  .session{order:1}.quick{order:2}.welcome{order:3}.nearby{order:4}.contact{order:5}
+  @media (min-width:960px){
+    .layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:24px;align-items:start;margin-top:-92px}
+    .col-main,.col-side{display:flex;flex-direction:column;gap:24px}
   }
-  .card .hd{ padding:14px 16px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid var(--stroke) }
-  .card .bd{ padding:14px 16px }
-  .muted{ color:var(--ink-2) }
+  .card{background:#fff;border-radius:var(--r);box-shadow:var(--shadow),0 0 0 1px rgba(21,32,29,.05)}
 
-  .list{ display:grid; grid-template-columns: 1fr 1fr; gap:12px }
-  @media (max-width:760px){ .list{ grid-template-columns:1fr } }
-  a.item, .item{
-    display:grid; grid-template-columns: 78px 1fr; gap:12px;
-    background:#fff; color:inherit; text-decoration:none;
-    border:1px solid color-mix(in oklab, var(--ink) 10%, #e5e7eb);
-    border-radius:14px; padding:12px; align-items:center;
-    box-shadow: 0 6px 18px rgba(0,0,0,.06);
-  }
-  a.item:hover, a.item:focus-visible{
-    border-color: color-mix(in oklab, var(--accent) 35%, #e5e7eb);
-    box-shadow: 0 8px 22px rgba(0,0,0,.10); transform: translateY(-1px);
-  }
-  .thumb{
-    width:78px; height:78px; border-radius:10px; object-fit:cover; display:block;
-    border:1px solid color-mix(in oklab, var(--accent) 22%, var(--stroke));
-  }
-  .item h4{ margin:2px 0 4px; font-size:16px; color:var(--ink) }
-  .item p{ margin:0; font-size:14px; color:var(--ink) }
-  .tag{ display:inline-flex; align-items:center; gap:8px; font-size:12px; border:1px solid var(--stroke); padding:2px 8px; border-radius:999px; background:#fff }
-  .tag.gold{ background: color-mix(in oklab, var(--accent) 16%, white); border-color: color-mix(in oklab, var(--accent) 28%, white) }
+  /* Oturum kartı */
+  .session{padding:20px}
+  .card__hd{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+  .card__hd h2{font-family:var(--serif);font-size:24px;font-weight:600}
+  .status{display:inline-flex;align-items:center;gap:8px;padding:5px 12px 5px 10px;border-radius:999px;background:rgba(62,207,142,.12);color:#16794b;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
+  .kv{margin:0;padding:4px 16px;border-radius:14px;background:var(--paper);border:1px solid var(--line)}
+  .kv div{display:flex;align-items:baseline;justify-content:space-between;gap:14px;padding:11px 0;border-bottom:1px dashed var(--line)}
+  .kv div:last-child{border-bottom:0}
+  .kv dt{flex:none;font-size:10.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  .kv dd{margin:0;font-weight:700;color:var(--ink);font-size:14.5px;text-align:right;min-width:0;overflow-wrap:anywhere}
+  .note{margin-top:12px;font-size:12.5px;color:var(--muted);display:flex;gap:8px;align-items:flex-start}
+  .note .icon{width:15px;height:15px;margin-top:3px;color:var(--copper)}
+  .sess-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+  .chip-link{display:inline-flex;align-items:center;gap:7px;padding:8px 14px;border-radius:999px;border:1px solid var(--line);font-size:13px;font-weight:700;color:var(--ink);transition:.2s}
+  .chip-link:hover{border-color:var(--ink)}
+  .chip-link .icon{width:15px;height:15px}
+  .chip-link--danger{color:#b42318}
+  .chip-link--danger:hover{border-color:#b42318}
 
-  .kv{ display:grid; grid-template-columns:1fr 1fr; gap:10px }
-  .kv div{ padding:8px 10px; border:1px dashed var(--stroke); border-radius:10px; background:#fff }
-  @media (max-width:620px){ .kv{ grid-template-columns:1fr } }
+  /* Hızlı işlemler */
+  .quick{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  @media (min-width:640px){.quick{grid-template-columns:repeat(4,1fr)}}
+  .tile{display:flex;flex-direction:column;gap:8px;padding:16px;border-radius:16px;background:#fff;box-shadow:0 10px 30px -18px rgba(19,48,42,.4),0 0 0 1px rgba(21,32,29,.05);transition:transform .25s,box-shadow .25s;min-width:0}
+  a.tile:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+  .tile__ico{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:var(--cream);color:var(--copper)}
+  .tile__ico .icon{width:21px;height:21px}
+  .tile__ico--num{font-family:var(--serif);font-size:28px;font-weight:700;line-height:1;color:var(--copper)}
+  .tile strong{color:var(--ink);font-size:14.5px;line-height:1.3}
+  .tile small{font-size:12.5px;color:var(--muted);line-height:1.45}
+  .tile--wa .tile__ico{background:rgba(37,211,102,.14);color:var(--wa-dark)}
+
+  /* Bölümler */
+  .sec{background:#fff;border-radius:var(--r);padding:22px;box-shadow:0 10px 30px -18px rgba(19,48,42,.35),0 0 0 1px rgba(21,32,29,.05)}
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--copper)}
+  .eyebrow::before{content:"";width:22px;height:1px;background:currentColor}
+  .sec h2{margin-top:8px;margin-bottom:16px;font-family:var(--serif);font-weight:600;font-size:clamp(26px,3vw,32px)}
+  .cards{display:grid;gap:12px}
+  @media (min-width:640px){.cards{grid-template-columns:repeat(3,1fr)}}
+  .cx{display:flex;flex-direction:column;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#fff;transition:transform .25s,box-shadow .25s}
+  a.cx:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:transparent}
+  .cx img{width:100%;aspect-ratio:4/3;object-fit:cover;background:var(--sand)}
+  .cx__body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1}
+  .tag{align-self:flex-start;font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background:var(--cream);color:var(--copper)}
+  .cx h3{font-family:var(--serif);font-size:22px;font-weight:600}
+  .cx p{font-size:14px;color:var(--muted)}
+  .more{margin-top:auto;padding-top:6px;display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--ink)}
+  .more .icon{width:14px;height:14px}
+  .near{display:grid;gap:10px}
+  @media (min-width:640px){.near{grid-template-columns:1fr 1fr}}
+  .near a{display:grid;grid-template-columns:84px 1fr auto;gap:14px;align-items:center;padding:8px;border-radius:14px;border:1px solid var(--line);transition:.2s}
+  .near a:hover{border-color:var(--copper);background:var(--paper)}
+  .near img{width:84px;height:68px;border-radius:10px;object-fit:cover;background:var(--sand)}
+  .near strong{display:block;color:var(--ink);font-size:15px}
+  .near span{font-size:13px;color:var(--muted)}
+  .near .icon{color:var(--copper);width:16px;height:16px;margin-right:6px}
+
+  /* İletişim */
+  .contact{padding:20px}
+  .contact h2{font-family:var(--serif);font-size:24px;font-weight:600;margin-bottom:12px}
+  .clist{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+  .clist li{display:grid;grid-template-columns:38px 1fr;gap:12px;align-items:center}
+  .clist .ci{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:var(--cream);color:var(--copper)}
+  .clist .ci .icon{width:17px;height:17px}
+  .clist .ci--num{font-family:var(--serif);font-weight:700;font-size:20px}
+  .clist small{display:block;font-size:10.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  .clist a,.clist b{color:var(--ink);font-weight:700;overflow-wrap:anywhere}
+  .clist a:hover{color:var(--brand-dark)}
+
+  /* Footer */
+  .foot{background:#0e231f;color:rgba(255,255,255,.7);font-size:13px;padding:28px 0 calc(28px + env(safe-area-inset-bottom))}
+  .foot__in{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px 24px}
+  .foot .brand{color:#fff}
+  .foot__links{display:flex;flex-wrap:wrap;gap:8px 18px}
+  .foot__links a{color:#fff;font-weight:700}
+  .foot__links a:hover{color:var(--gold)}
+  .foot__note{width:100%;padding-top:14px;border-top:1px solid rgba(255,255,255,.1);display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 20px}
+
+  @media (max-width:600px){
+    .ssid{display:none}
+    .hero__actions .btn{width:100%}
+  }
+  @media (max-width:380px){ .brand__sub{display:none} }
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5G6DT6W" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<svg style="position:absolute;width:0;height:0" aria-hidden="true"><defs>
+  <symbol id="i-wifi" viewBox="0 0 24 24"><path d="M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0M2 9a15 15 0 0 1 20 0"/><path d="M12 19.5h.01"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m3 6 9 7 9-7"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-utensils" viewBox="0 0 24 24"><path d="M3 2v7a3 3 0 0 0 3 3v10M9 2v7a3 3 0 0 1-3 3M6 2v5M18 22V2a4 4 0 0 0-4 4v7h4"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4l-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9L12 2.5Z"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-power" viewBox="0 0 24 24"><path d="M12 2v10M18.4 6.6a9 9 0 1 1-12.8 0"/></symbol>
+  <symbol id="i-activity" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="16.5" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></symbol>
+  <symbol id="i-wa" viewBox="0 0 24 24"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35M12.05 21.5h-.01a9.4 9.4 0 0 1-4.8-1.32l-.34-.2-3.57.94.95-3.48-.22-.36a9.4 9.4 0 0 1-1.44-5.02c0-5.2 4.23-9.43 9.44-9.43a9.4 9.4 0 0 1 9.43 9.44c0 5.2-4.24 9.43-9.44 9.43m8.03-17.58A11.25 11.25 0 0 0 12.05.6C5.8.6.7 5.7.7 11.95c0 2 .52 3.95 1.52 5.67L.6 23.4l5.9-1.55a11.3 11.3 0 0 0 5.54 1.41h.01c6.25 0 11.35-5.09 11.35-11.35 0-3.03-1.18-5.88-3.32-8.02"/></symbol>
+</defs></svg>
 
-<!-- ÜST BAR: AP kaldırıldı -->
-<div class="top">
-  <div class="top-inner">
-    <a class="brand" href="https://inankardeslerotel.com" rel="noopener">
-      <img src="https://inankardeslerotel.com/images/logo/logo.png" alt="İnan Kardeşler Otel logosu" />
-      <span class="sr">İnan Kardeşler Otel</span>
-    </a>
-    <div class="top-pills">
-      <span class="pill">SSID: <strong id="ssidTxt">InanKardeslerHotel</strong></span>
-      <!-- AP pili kaldırıldı -->
-      <div class="lang" role="group" aria-label="Dil">
-        <button id="langTR" aria-pressed="true">TR</button>
-        <button id="langEN" aria-pressed="false">EN</button>
+<header class="bar">
+  <div class="wrap bar__in">
+    <a class="brand" href="https://inankardeslerotel.com/" aria-label="İnan Kardeşler Otel"><svg class="brand__mark" viewBox="0 0 96 96" aria-hidden="true" focusable="false"><path fill="#EE7528" d="M32.28,32.57C22,44.88,18.82,73.54,24.03,80.49c0.99,1.29,2,1.43,3.04,0.43c3.13-2.96,4.89-5.57,6.01-8.32 c0.54-1.41,0.69-2.17,0.29-3.62C30.36,56.74,29.86,44.36,32.28,32.57z"/><path fill="#EE7528" d="M31.09,22.95c1.16-2.19,3.09-3.44,4.3-2.8c1.21,0.64,1.25,2.94,0.08,5.13c-1.16,2.19-3.09,3.44-4.3,2.8 C29.96,27.44,29.92,25.14,31.09,22.95z"/><path fill="#EE7528" d="M61.6,19.49c5.83-2.88,10.16-3.61,11.78-1.95c2.48,2.54-2.54,13.65-13.65,21.16 c-10.13,6.86-18.17,10.16-21.39,8.75c-0.31-0.13-0.57-0.31-0.79-0.54c-2.48-2.54,2.87-13.22,13.61-21 C54.94,23.19,58.48,21.03,61.6,19.49z"/><path fill="#D5EAEC" d="M37.91,47.02c-2.97-1.24-1.29-14.02,6.1-26.61C51.46,7.69,58.56,0.49,61.53,1.73 c1.83,0.77,2.05,6.03,0.12,12.89c-1.2,4.25-3.22,9.11-6.2,13.9c-7.39,11.88-13.88,19-17.06,18.63 C38.22,47.13,38.06,47.08,37.91,47.02z"/><path fill="#EE7528" d="M61.6,76.21c5.83,2.88,10.16,3.61,11.78,1.95c2.48-2.54-2.54-13.65-13.65-21.16 c-10.13-6.86-18.17-10.16-21.39-8.75c-0.31,0.13-0.57,0.31-0.79,0.54c-2.48,2.54,2.87,13.22,13.61,21 C54.94,72.51,58.48,74.67,61.6,76.21z"/><path fill="#D5EAEC" d="M37.91,48.68c-2.97,1.24-1.29,14.02,6.1,26.61c7.45,12.72,14.55,19.92,17.52,18.68 c1.83-0.77,2.05-6.03,0.12-12.89c-1.2-4.25-3.22-9.11-6.2-13.9c-7.39-11.88-13.88-19-17.06-18.63 C38.22,48.57,38.06,48.62,37.91,48.68z"/><path fill="#59C1D3" d="M37.18,46.34c-1.4-3.3,3.92-13.13,13.99-20.42c2.98-2.15,5.81-3.95,8.39-5.37 c-1.09,2.6-2.45,5.29-4.12,7.96c-7.39,11.88-13.88,19-17.06,18.63c-0.17-0.02-0.33-0.06-0.48-0.12 C37.62,46.9,37.38,46.67,37.18,46.34z"/><path fill="#59C1D3" d="M37.18,49.36c-1.4,3.3,3.92,13.13,13.99,20.42c2.98,2.15,5.81,3.95,8.39,5.37 c-1.09-2.6-2.45-5.29-4.12-7.96c-7.39-11.88-13.88-19-17.06-18.63c-0.17,0.02-0.33,0.06-0.48,0.12 C37.62,48.8,37.38,49.03,37.18,49.36z"/></svg><span class="brand__text"><span class="brand__name">İnan Kardeşler</span><span class="brand__sub" data-i18n="brandSub">Otel · Restaurant · Uzungöl</span></span></a>
+    <div class="bar__right">
+      <span class="ssid" title="SSID"><svg class="icon"><use href="#i-wifi"/></svg><span id="ssidTxt">InanKardeslerHotel</span></span>
+      <div class="lang" role="group" aria-label="Dil / Language">
+        <button id="langTR" type="button" aria-pressed="true">TR</button>
+        <button id="langEN" type="button" aria-pressed="false">EN</button>
       </div>
     </div>
   </div>
-</div>
-
-<header class="hero">
-  <img class="bg" src="https://lh3.googleusercontent.com/p/AF1QipPiga6YOOxs9z4V6FbuQfJSyT5bp5RN-yTRbIHj=s680-w680-h510-rw" alt="" />
-  <div class="shade"></div>
-  <div class="container content">
-    <div class="kicker">WIFI • İNAN KARDEŞLER OTEL</div>
-    <h1 id="heroTitle">Hoş geldiniz – Wi‑Fi bağlantınız aktif</h1>
-    <p class="sub" id="heroSub">Restoranımızı keşfedin, bahçedeki kahvaltıya göz atın, canlı destekten bize yazın ve Uzungöl’de yakındaki yerleri inceleyin.</p>
-  </div>
 </header>
 
-<main class="container">
-  <div class="grid">
-    <section class="col-8">
-      <div class="card">
-        <div class="hd">
-          <strong id="hdWelcome">Uzungöl’de keyifli bir konaklama dileriz!</strong>
-          <span class="tag gold" id="connectedTag">Bağlı</span>
+<section class="hero">
+  <img class="hero__bg" src="https://inankardeslerotel.com/images/uzungol.webp" alt="" fetchpriority="high">
+  <div class="wrap hero__in">
+    <div class="wifi-badge" aria-hidden="true"><svg class="icon"><use href="#i-wifi"/></svg></div>
+    <p class="kicker"><span class="live" aria-hidden="true"></span><span data-i18n="kicker">Wi‑Fi · İnan Kardeşler Otel</span></p>
+    <h1><span data-i18n="h1a">Hoş geldiniz</span><em data-i18n="h1b">Wi‑Fi bağlantınız aktif</em></h1>
+    <p class="hero__sub" data-i18n="heroSub">Restoranımızı keşfedin, bahçedeki kahvaltıya göz atın, canlı destekten bize yazın ve Uzungöl’de yakındaki yerleri inceleyin.</p>
+    <div class="hero__actions">
+      <a class="btn btn--primary" id="continueBtn" data-track="continue" rel="noopener" hidden><span data-i18n="continue">Devam edin</span><span class="btn__host" id="continueHost"></span><svg class="icon"><use href="#i-arrow"/></svg></a>
+      <a class="btn btn--ghost" href="https://inankardeslerotel.com/" data-track="website_hero"><span data-i18n="website">Otel web sitesi</span><svg class="icon"><use href="#i-arrow"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<main class="wrap layout">
+  <div class="col-main">
+    <nav class="quick" aria-label="Hızlı erişim">
+      <div class="tile">
+        <span class="tile__ico tile__ico--num" aria-hidden="true">0</span>
+        <strong data-i18n="recepTitle">Resepsiyon</strong>
+        <small data-i18n="recepText">Oda telefonundan 0’ı tuşlayın</small>
+      </div>
+      <a class="tile tile--wa" data-track="whatsapp" href="https://api.whatsapp.com/send?phone=905327376010&amp;text=Merhaba%21%20" target="_blank" rel="noopener">
+        <span class="tile__ico"><svg class="icon icon--fill"><use href="#i-wa"/></svg></span>
+        <strong data-i18n="waTitle">WhatsApp ile bize yazın</strong>
+        <small data-i18n="waText">Sorularınız için 7/24 yanıtlıyoruz: +90 532 737 60 10</small>
+      </a>
+      <a class="tile" href="https://inankardeslerotel.com/qrmenu/web/" data-track="menu">
+        <span class="tile__ico"><svg class="icon"><use href="#i-utensils"/></svg></span>
+        <strong data-i18n="menuTitle">Dijital Menü</strong>
+        <small data-i18n="menuText">Restoran menümüzü görüntüleyin</small>
+      </a>
+      <a class="tile" data-track="tripadvisor" href="https://www.tripadvisor.com.tr/Hotel_Review-g1468364-d2299331-Reviews-Inan_Kardesler_Hotel-Uzungol_Turkish_Black_Sea_Coast.html" target="_blank" rel="noopener">
+        <span class="tile__ico"><svg class="icon"><use href="#i-star"/></svg></span>
+        <strong data-i18n="rateTitle">Bizi değerlendirin</strong>
+        <small data-i18n="rateText">Konaklamanızı Tripadvisor’da yorumlayın</small>
+      </a>
+    </nav>
+
+    <section class="sec welcome" aria-labelledby="welcomeHd">
+      <p class="eyebrow" data-i18n="eyebrowStay">Konaklamanız</p>
+      <h2 id="welcomeHd" data-i18n="welcomeHd">Uzungöl’de keyifli bir konaklama dileriz!</h2>
+      <div class="cards">
+        <a class="cx" href="https://inankardeslerotel.com/restoran/" data-track="restaurant">
+          <img src="https://inankardeslerotel.com/images/restoran/alabalik.webp" alt="" loading="lazy">
+          <div class="cx__body"><span class="tag" data-i18n="tagRestaurant">Restoran</span><h3 data-i18n="restTitle">Yöresel lezzetler</h3><p data-i18n="restText">Tereyağında alabalık, muhlama/kuymak ve günlük menüler.</p><span class="more"><span data-i18n="restMore">Restoran sayfası</span><svg class="icon"><use href="#i-arrow"/></svg></span></div>
+        </a>
+        <div class="cx">
+          <img src="https://inankardeslerotel.com/images/restoran/muhlama.webp" alt="" loading="lazy">
+          <div class="cx__body"><span class="tag" data-i18n="tagBreakfast">Kahvaltı</span><h3 data-i18n="bfTitle">Bahçede, dere kenarı</h3><p data-i18n="bfText">Yeşil bahçemizde kahvaltı; gün boyu yiyecek‑içecek servisi.</p></div>
         </div>
-        <div class="bd">
-          <div class="list">
-            <a class="item" href="https://inankardeslerotel.com/restoran/" rel="noopener">
-              <img class="thumb" loading="lazy" src="https://lh3.googleusercontent.com/p/AF1QipN-rDy4stevcz3OlmKJzUAwBdWpOXEfncOiQnUr=s680-w680-h510-rw" alt="Restoran" />
-              <div>
-                <span class="tag" id="tagRestaurant">Restoran</span>
-                <h4 id="restTitle">Yöresel lezzetler</h4>
-                <p id="restText">Tereyağında alabalık, muhlama/kuymak ve günlük menüler. → Restoran sayfası</p>
-              </div>
-            </a>
-            <a class="item" href="https://api.whatsapp.com/send?phone=+905327376010&text=Merhaba%21+" rel="noopener">
-              <img class="thumb" loading="lazy" src="https://play-lh.googleusercontent.com/bYtqbOcTYOlgc6gqZ2rwb8lptHuwlNE75zYJu6Bn076-hTmvd96HH-6v7S0YUAAJXoJN=w240-h480-rw" alt="Canlı Destek" />
-              <div>
-                <span class="tag" id="tagSupport">Canlı Destek</span>
-                <h4 id="waTitle">WhatsApp ile bize yazın</h4>
-                <p id="waText">Sorularınız için 7/24 yanıtlıyoruz: +90 532 737 60 10</p>
-              </div>
-            </a>
-            <div class="item">
-              <img class="thumb" loading="lazy" src="https://lh3.googleusercontent.com/p/AF1QipN-rDy4stevcz3OlmKJzUAwBdWpOXEfncOiQnUr=s680-w680-h510-rw" alt="Kahvaltı" />
-              <div>
-                <span class="tag" id="tagBreakfast">Kahvaltı</span>
-                <h4 id="bfTitle">Bahçede, dere kenarı</h4>
-                <p id="bfText">Yeşil bahçemizde kahvaltı; gün boyu yiyecek‑içecek servisi.</p>
-              </div>
-            </div>
-            <a class="item" href="https://inankardeslerotel.com/uzungol-muzesi.html" rel="noopener">
-              <img class="thumb" loading="lazy" src="https://lh3.googleusercontent.com/p/AF1QipN4Xa_wvPivb1qoB3yXH9Po6Zk-cgWFuFmXmtc5=s680-w680-h510-rw" alt="Müze" />
-              <div>
-                <span class="tag" id="tagMuseum">Müze</span>
-                <h4 id="museumTitle">Uzungöl Dursun Ali İnan Müzesi</h4>
-                <p id="museumText">Kültür evi, kök‑taş eserleri ve bölge tarihi. → Detaylar</p>
-              </div>
-            </a>
-            <div class="item">
-              <img class="thumb" loading="lazy" src="https://lh3.googleusercontent.com/p/AF1QipM94R1YFvHWMHy3_Am75Q57WAAquDh3WHV8OzNg=s680-w680-h510-rw" alt="Yakın yerler" />
-              <div>
-                <span class="tag" id="tagNearby">Yakın Yerler</span>
-                <h4 id="nearTitle">Uzungöl çevresinde</h4>
-                <p id="nearText">
-                  • <strong>Uzungöl göl kenarı</strong> – yürüyüş ve manzara<br/>
-                  • <strong>Karester Yaylası</strong> – seyir noktası (2245 m)
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+        <a class="cx" href="https://inankardeslerotel.com/uzungol-muzesi.html" data-track="museum">
+          <img src="https://inankardeslerotel.com/images/uzungol-dursun-ali-inan-muzesi.webp" alt="" loading="lazy">
+          <div class="cx__body"><span class="tag" data-i18n="tagMuseum">Müze</span><h3 data-i18n="museumTitle">Uzungöl Dursun Ali İnan Müzesi</h3><p data-i18n="museumText">Kültür evi, kök‑taş eserleri ve bölge tarihi.</p><span class="more"><span data-i18n="details">Detaylar</span><svg class="icon"><use href="#i-arrow"/></svg></span></div>
+        </a>
       </div>
     </section>
 
-    <aside class="col-4">
-      <div class="card">
-        <div class="hd"><strong id="sessionTitle">Wi‑Fi Oturum Bilgileri</strong></div>
-        <div class="bd">
-          <div class="kv">
-            <div><strong id="lblSSID">SSID</strong><br><span id="ssidVal">—</span></div>
-            <div><strong id="lblStart">Başlangıç</strong><br><span id="startVal">—</span></div>
-            <div><strong id="lblDuration">Süre</strong><br><span id="durVal">—</span></div>
-            <div><strong id="lblIP">IP</strong><br><span id="ipVal">—</span></div>
-            <div><strong id="lblMAC">MAC</strong><br><span id="macVal">—</span></div>
-          </div>
-          <p class="muted" style="margin:.8rem 0 0" id="sessionNote">
-            Güvenlik için kimlik bilgileri üçüncü kişilerle paylaşılmaz.
-          </p>
-        </div>
+    <section class="sec nearby" aria-labelledby="nearTitle">
+      <p class="eyebrow" data-i18n="tagNearby">Yakın Yerler</p>
+      <h2 id="nearTitle" data-i18n="nearTitle">Uzungöl çevresinde</h2>
+      <div class="near">
+        <a href="https://inankardeslerotel.com/uzungol/uzungol.html" data-track="nearby_lake">
+          <img src="https://inankardeslerotel.com/images/uzungol/uzungol-6.webp" alt="" loading="lazy">
+          <div><strong data-i18n="near1t">Uzungöl göl kenarı</strong><span data-i18n="near1s">Yürüyüş ve manzara</span></div>
+          <svg class="icon"><use href="#i-arrow"/></svg>
+        </a>
+        <a href="https://inankardeslerotel.com/uzungol/yaylalar-ve-goller/karester-yaylasi.html" data-track="nearby_karester">
+          <img src="https://inankardeslerotel.com/images/yaylalar-ve-goller/karester1.webp" alt="" loading="lazy">
+          <div><strong data-i18n="near2t">Karester Yaylası</strong><span data-i18n="near2s">Seyir noktası (2245 m)</span></div>
+          <svg class="icon"><use href="#i-arrow"/></svg>
+        </a>
       </div>
-
-      <div class="card" style="margin-top:12px">
-        <div class="hd"><strong id="contactTitle">İletişim</strong></div>
-        <div class="bd">
-          <p class="muted" style="margin:.3rem 0">
-            <b>Reception Number: 0 </b><br/>
-            Tel: <a class="link" href="tel:+904626566260">+90 462 656 62 60</a><br/>
-            E‑posta: <a class="link" href="mailto:inan@inankardeslerotel.com">inan@inankardeslerotel.com</a>
-          </p>
-        </div>
-      </div>
-    </aside>
+    </section>
   </div>
 
-  <div class="footer" style="display:flex;justify-content:space-between;gap:10px;margin:20px 0 40px;color:var(--ink-2)">
-    <div>© <span id="year"></span> İnan Kardeşler Otel — Tüm hakları saklıdır.</div>
-    <div class="muted">Bu sayfa login sonrası bilgilendirme amaçlıdır.</div>
+  <div class="col-side">
+    <section class="card session" aria-labelledby="sessTitle">
+      <div class="card__hd">
+        <h2 id="sessTitle" data-i18n="sessTitle">Wi‑Fi Oturum Bilgileri</h2>
+        <span class="status"><span class="live" aria-hidden="true"></span><span data-i18n="connected">Bağlı</span></span>
+      </div>
+      <dl class="kv">
+        <div><dt>SSID</dt><dd id="ssidVal">—</dd></div>
+        <div><dt data-i18n="lblDuration">Süre</dt><dd id="durVal">—</dd></div>
+        <div><dt data-i18n="lblStart">Başlangıç</dt><dd id="startVal">—</dd></div>
+        <div><dt>IP</dt><dd class="mono" id="ipVal">—</dd></div>
+        <div><dt>MAC</dt><dd class="mono" id="macVal">—</dd></div>
+        <div id="userRow" hidden><dt data-i18n="lblUser">Kullanıcı</dt><dd id="userVal"></dd></div>
+        <div id="leftRow" hidden><dt data-i18n="lblLeft">Kalan süre</dt><dd id="leftVal"></dd></div>
+      </dl>
+      <p class="note"><svg class="icon"><use href="#i-shield"/></svg><span data-i18n="sessNote">Güvenlik için kimlik bilgileri üçüncü kişilerle paylaşılmaz.</span></p>
+      <div class="sess-links" id="sessLinks" hidden>
+        <a class="chip-link" id="statusLink" data-track="session_status" hidden><svg class="icon"><use href="#i-activity"/></svg><span data-i18n="status">Oturum durumu</span></a>
+        <a class="chip-link chip-link--danger" id="logoutLink" data-track="logout" hidden><svg class="icon"><use href="#i-power"/></svg><span data-i18n="logout">Bağlantıyı kes</span></a>
+      </div>
+    </section>
+
+    <section class="card contact" aria-labelledby="contactTitle">
+      <h2 id="contactTitle" data-i18n="contactTitle">İletişim</h2>
+      <ul class="clist">
+        <li><span class="ci ci--num" aria-hidden="true">0</span><div><small data-i18n="lblRecep">Resepsiyon</small><b data-i18n="recepNo">Resepsiyon Numarası: 0</b></div></li>
+        <li><span class="ci"><svg class="icon"><use href="#i-phone"/></svg></span><div><small data-i18n="lblTel">Telefon</small><a href="tel:+904626566260" data-track="phone">+90 462 656 62 60</a></div></li>
+        <li><span class="ci"><svg class="icon"><use href="#i-mail"/></svg></span><div><small data-i18n="lblMail">E‑posta</small><a href="mailto:inan@inankardeslerotel.com" data-track="email">inan@inankardeslerotel.com</a></div></li>
+        <li><span class="ci"><svg class="icon"><use href="#i-pin"/></svg></span><div><small data-i18n="lblAddr">Adres</small><a data-track="directions" href="https://www.google.com/maps/dir/?api=1&amp;destination=40.618652,40.303752" target="_blank" rel="noopener">Uzungöl Mah. Fatih Cad. No:25/A, Çaykara, Trabzon</a></div></li>
+      </ul>
+    </section>
   </div>
 </main>
 
+<footer class="foot">
+  <div class="wrap foot__in">
+    <a class="brand" href="https://inankardeslerotel.com/"><svg class="brand__mark" viewBox="0 0 96 96" aria-hidden="true" focusable="false"><path fill="#EE7528" d="M32.28,32.57C22,44.88,18.82,73.54,24.03,80.49c0.99,1.29,2,1.43,3.04,0.43c3.13-2.96,4.89-5.57,6.01-8.32 c0.54-1.41,0.69-2.17,0.29-3.62C30.36,56.74,29.86,44.36,32.28,32.57z"/><path fill="#EE7528" d="M31.09,22.95c1.16-2.19,3.09-3.44,4.3-2.8c1.21,0.64,1.25,2.94,0.08,5.13c-1.16,2.19-3.09,3.44-4.3,2.8 C29.96,27.44,29.92,25.14,31.09,22.95z"/><path fill="#EE7528" d="M61.6,19.49c5.83-2.88,10.16-3.61,11.78-1.95c2.48,2.54-2.54,13.65-13.65,21.16 c-10.13,6.86-18.17,10.16-21.39,8.75c-0.31-0.13-0.57-0.31-0.79-0.54c-2.48-2.54,2.87-13.22,13.61-21 C54.94,23.19,58.48,21.03,61.6,19.49z"/><path fill="#D5EAEC" d="M37.91,47.02c-2.97-1.24-1.29-14.02,6.1-26.61C51.46,7.69,58.56,0.49,61.53,1.73 c1.83,0.77,2.05,6.03,0.12,12.89c-1.2,4.25-3.22,9.11-6.2,13.9c-7.39,11.88-13.88,19-17.06,18.63 C38.22,47.13,38.06,47.08,37.91,47.02z"/><path fill="#EE7528" d="M61.6,76.21c5.83,2.88,10.16,3.61,11.78,1.95c2.48-2.54-2.54-13.65-13.65-21.16 c-10.13-6.86-18.17-10.16-21.39-8.75c-0.31,0.13-0.57,0.31-0.79,0.54c-2.48,2.54,2.87,13.22,13.61,21 C54.94,72.51,58.48,74.67,61.6,76.21z"/><path fill="#D5EAEC" d="M37.91,48.68c-2.97,1.24-1.29,14.02,6.1,26.61c7.45,12.72,14.55,19.92,17.52,18.68 c1.83-0.77,2.05-6.03,0.12-12.89c-1.2-4.25-3.22-9.11-6.2-13.9c-7.39-11.88-13.88-19-17.06-18.63 C38.22,48.57,38.06,48.62,37.91,48.68z"/><path fill="#59C1D3" d="M37.18,46.34c-1.4-3.3,3.92-13.13,13.99-20.42c2.98-2.15,5.81-3.95,8.39-5.37 c-1.09,2.6-2.45,5.29-4.12,7.96c-7.39,11.88-13.88,19-17.06,18.63c-0.17-0.02-0.33-0.06-0.48-0.12 C37.62,46.9,37.38,46.67,37.18,46.34z"/><path fill="#59C1D3" d="M37.18,49.36c-1.4,3.3,3.92,13.13,13.99,20.42c2.98,2.15,5.81,3.95,8.39,5.37 c-1.09-2.6-2.45-5.29-4.12-7.96c-7.39-11.88-13.88-19-17.06-18.63c-0.17,0.02-0.33,0.06-0.48,0.12 C37.62,48.8,37.38,49.03,37.18,49.36z"/></svg><span class="brand__text"><span class="brand__name">İnan Kardeşler</span></span></a>
+    <nav class="foot__links" aria-label="Bağlantılar">
+      <a href="https://inankardeslerotel.com/" data-i18n="website">Otel web sitesi</a>
+      <a href="https://reservation.inankardeslerotel.com/" data-track="book" data-i18n="book">Online Rezervasyon</a>
+      <a href="https://www.instagram.com/inankardesler" target="_blank" rel="noopener" data-track="instagram">Instagram</a>
+    </nav>
+    <div class="foot__note">
+      <span>© <span id="year"></span> İnan Kardeşler Otel — <span data-i18n="rights">Tüm hakları saklıdır.</span></span>
+      <span data-i18n="footNote">Bu sayfa login sonrası bilgilendirme amaçlıdır.</span>
+    </div>
+  </div>
+</footer>
+
 <script>
-  const I18N = {
-    tr:{
-      heroTitle:"Hoş geldiniz – Wi‑Fi bağlantınız aktif",
-      heroSub:"Restoranımızı keşfedin, bahçedeki kahvaltıya göz atın, canlı destekten bize yazın ve Uzungöl’de yakındaki yerleri inceleyin.",
-      welcomeHd:"Uzungöl’de keyifli bir konaklama dileriz!", connected:"Bağlı",
-      tagRestaurant:"Restoran", tagSupport:"Canlı Destek", tagBreakfast:"Kahvaltı", tagNearby:"Yakın Yerler", tagMuseum:"Müze",
-      restTitle:"Yöresel lezzetler", restText:"Tereyağında alabalık, muhlama/kuymak ve günlük menüler. → Restoran sayfası",
-      waTitle:"WhatsApp ile bize yazın", waText:"Sorularınız için 7/24 yanıtlıyoruz: +90 532 737 60 10",
-      bfTitle:"Bahçede, dere kenarı", bfText:"Yeşil bahçemizde kahvaltı; gün boyu yiyecek‑içecek servisi.",
-      museumTitle:"Uzungöl Dursun Ali İnan Müzesi", museumText:"Kültür evi, kök‑taş eserleri ve bölge tarihi. → Detaylar",
-      nearTitle:"Uzungöl çevresinde", nearText:"• Uzungöl göl kenarı • Karester Yaylası (2245 m)",
-      sessTitle:"Wi‑Fi Oturum Bilgileri", sessNote:"Güvenlik için kimlik bilgileri üçüncü kişilerle paylaşılmaz.",
-      lblSSID:"SSID", lblStart:"Başlangıç", lblDuration:"Süre", lblIP:"IP", lblMAC:"MAC",
-      btnTR:"TR", btnEN:"EN"
+(function () {
+  "use strict";
+  var I18N = {
+    tr: {
+      brandSub: "Otel · Restaurant · Uzungöl", kicker: "Wi‑Fi · İnan Kardeşler Otel",
+      h1a: "Hoş geldiniz", h1b: "Wi‑Fi bağlantınız aktif",
+      heroSub: "Restoranımızı keşfedin, bahçedeki kahvaltıya göz atın, canlı destekten bize yazın ve Uzungöl’de yakındaki yerleri inceleyin.",
+      "continue": "Devam edin", website: "Otel web sitesi",
+      recepTitle: "Resepsiyon", recepText: "Oda telefonundan 0’ı tuşlayın",
+      waTitle: "WhatsApp ile bize yazın", waText: "Sorularınız için 7/24 yanıtlıyoruz: +90 532 737 60 10",
+      menuTitle: "Dijital Menü", menuText: "Restoran menümüzü görüntüleyin",
+      rateTitle: "Bizi değerlendirin", rateText: "Konaklamanızı Tripadvisor’da yorumlayın",
+      eyebrowStay: "Konaklamanız", welcomeHd: "Uzungöl’de keyifli bir konaklama dileriz!",
+      tagRestaurant: "Restoran", restTitle: "Yöresel lezzetler", restText: "Tereyağında alabalık, muhlama/kuymak ve günlük menüler.", restMore: "Restoran sayfası",
+      tagBreakfast: "Kahvaltı", bfTitle: "Bahçede, dere kenarı", bfText: "Yeşil bahçemizde kahvaltı; gün boyu yiyecek‑içecek servisi.",
+      tagMuseum: "Müze", museumTitle: "Uzungöl Dursun Ali İnan Müzesi", museumText: "Kültür evi, kök‑taş eserleri ve bölge tarihi.", details: "Detaylar",
+      tagNearby: "Yakın Yerler", nearTitle: "Uzungöl çevresinde",
+      near1t: "Uzungöl göl kenarı", near1s: "Yürüyüş ve manzara", near2t: "Karester Yaylası", near2s: "Seyir noktası (2245 m)",
+      sessTitle: "Wi‑Fi Oturum Bilgileri", connected: "Bağlı", lblStart: "Başlangıç", lblDuration: "Süre", lblUser: "Kullanıcı", lblLeft: "Kalan süre",
+      sessNote: "Güvenlik için kimlik bilgileri üçüncü kişilerle paylaşılmaz.", status: "Oturum durumu", logout: "Bağlantıyı kes",
+      contactTitle: "İletişim", lblRecep: "Resepsiyon", recepNo: "Resepsiyon Numarası: 0", lblTel: "Telefon", lblMail: "E‑posta", lblAddr: "Adres",
+      book: "Online Rezervasyon", rights: "Tüm hakları saklıdır.", footNote: "Bu sayfa login sonrası bilgilendirme amaçlıdır.",
+      h: "sa", m: "dk", s: "sn", d: "g"
     },
-    en:{
-      heroTitle:"Welcome – Your Wi‑Fi is active",
-      heroSub:"Explore our restaurant, breakfast in the garden, live support, and nearby sights in Uzungöl.",
-      welcomeHd:"Have a wonderful stay in Uzungöl!", connected:"Connected",
-      tagRestaurant:"Restaurant", tagSupport:"Live Support", tagBreakfast:"Breakfast", tagNearby:"Nearby", tagMuseum:"Museum",
-      restTitle:"Local specialties", restText:"Trout in butter, muhlama/kuymak and daily dishes. → Restaurant page",
-      waTitle:"Chat with us on WhatsApp", waText:"We’re here 24/7: +90 532 737 60 10",
-      bfTitle:"In the garden by the stream", bfText:"Enjoy breakfast in our green garden; all‑day F&B service.",
-      museumTitle:"Uzungöl Dursun Ali İnan Museum", museumText:"Culture house, root‑stone works and regional history. → Details",
-      nearTitle:"Around Uzungöl", nearText:"• Uzungöl lakeside • Karester Plateau (2,245 m)",
-      sessTitle:"Wi‑Fi Session Details", sessNote:"For security, identifiers are not shared with third parties.",
-      lblSSID:"SSID", lblStart:"Start", lblDuration:"Duration", lblIP:"IP", lblMAC:"MAC",
-      btnTR:"TR", btnEN:"EN"
+    en: {
+      brandSub: "Hotel · Restaurant · Uzungol", kicker: "Wi‑Fi · İnan Kardeşler Hotel",
+      h1a: "Welcome", h1b: "Your Wi‑Fi is active",
+      heroSub: "Explore our restaurant, breakfast in the garden, live support, and nearby sights in Uzungöl.",
+      "continue": "Continue", website: "Hotel website",
+      recepTitle: "Reception", recepText: "Dial 0 from your room phone",
+      waTitle: "Chat with us on WhatsApp", waText: "We’re here 24/7: +90 532 737 60 10",
+      menuTitle: "Digital Menu", menuText: "View our restaurant menu",
+      rateTitle: "Rate your stay", rateText: "Review your stay on Tripadvisor",
+      eyebrowStay: "Your stay", welcomeHd: "Have a wonderful stay in Uzungöl!",
+      tagRestaurant: "Restaurant", restTitle: "Local specialties", restText: "Trout in butter, muhlama/kuymak and daily dishes.", restMore: "Restaurant page",
+      tagBreakfast: "Breakfast", bfTitle: "In the garden by the stream", bfText: "Enjoy breakfast in our green garden; all‑day F&B service.",
+      tagMuseum: "Museum", museumTitle: "Uzungöl Dursun Ali İnan Museum", museumText: "Culture house, root‑stone works and regional history.", details: "Details",
+      tagNearby: "Nearby", nearTitle: "Around Uzungöl",
+      near1t: "Uzungöl lakeside", near1s: "Walks and views", near2t: "Karester Plateau", near2s: "Viewpoint (2,245 m)",
+      sessTitle: "Wi‑Fi Session Details", connected: "Connected", lblStart: "Start", lblDuration: "Duration", lblUser: "User", lblLeft: "Time left",
+      sessNote: "For security, identifiers are not shared with third parties.", status: "Session status", logout: "Disconnect",
+      contactTitle: "Contact", lblRecep: "Reception", recepNo: "Reception Number: 0", lblTel: "Phone", lblMail: "E‑mail", lblAddr: "Address",
+      book: "Book Online", rights: "All rights reserved.", footNote: "This page is shown for information after login.",
+      h: "h", m: "min", s: "s", d: "d"
     }
   };
 
-  const $ = s => document.querySelector(s);
-  const params = new URLSearchParams(location.search);
-  $('#year').textContent = new Date().getFullYear();
-
-  const ssid = params.get('ssid') || 'InanKardeslerHotel Wi‑Fi';
-  const ip   = params.get('client_ip') || params.get('ip') || '—';
-  const mac  = params.get('client_mac') || params.get('mac') || '—';
-
-  const startAt = new Date();
-  function fmtDT(lang){ return new Intl.DateTimeFormat(lang==='tr'?'tr-TR':'en-GB', { dateStyle:'medium', timeStyle:'short' }); }
-  function fmtDur(ms, lang){
-    let s = Math.max(0, Math.floor(ms/1000));
-    const h = Math.floor(s/3600); s%=3600; const m = Math.floor(s/60); s%=60;
-    return lang==='tr' ? (h?`${h} sa `:'')+(m?`${m} dk `:'')+`${s} sn` : (h?`${h} h `:'')+(m?`${m} min `:'')+`${s} s`;
+  function $(s) { return document.querySelector(s); }
+  var W = window.IK_WIFI || { q: location.search, t: Date.now() };
+  var params = new URLSearchParams(W.q || "");
+  function param() {
+    for (var i = 0; i < arguments.length; i++) {
+      var v = (params.get(arguments[i]) || "").trim();
+      if (v && v.indexOf("$(") !== 0) return v; // işlenmemiş MikroTik değişkenlerini yok say
+    }
+    return "";
+  }
+  function safeUrl(v) {
+    if (!v) return null;
+    try { var u = new URL(v, location.href); return /^https?:$/.test(u.protocol) ? u : null; } catch (e) { return null; }
+  }
+  // MikroTik süre biçimi: 1w2d3h4m5s
+  function parseDur(v) {
+    var m = String(v || "").match(/^(?:(\d+)w)?(?:(\d+)d)?(?:(\d+)h)?(?:(\d+)m)?(?:(\d+)s)?$/);
+    if (!m || !v) return null;
+    return (+(m[1] || 0) * 604800 + +(m[2] || 0) * 86400 + +(m[3] || 0) * 3600 + +(m[4] || 0) * 60 + +(m[5] || 0)) * 1000;
   }
 
-  function detectPreferredLang(){
-    const qp=(params.get('lang')||'').toLowerCase();
-    if(qp.startsWith('tr')) return 'tr';
-    if(qp.startsWith('en')) return 'en';
-    const saved=localStorage.getItem('wifi_lang_ik'); if(saved==='tr'||saved==='en') return saved;
-    const langs=navigator.languages||[navigator.language||'']; if(langs.some(l=>(l||'').toLowerCase().startsWith('tr'))) return 'tr';
-    return 'en';
-  }
-  let currentLang = detectPreferredLang();
-  let T = I18N[currentLang];
+  var ssid = param("ssid") || "InanKardeslerHotel";
+  var ip = param("client_ip", "ip") || "—";
+  var mac = (param("client_mac", "mac") || "—").toUpperCase();
+  var user = param("username", "user");
+  var leftMs = parseDur(param("left", "session-time-left"));
+  var upMs = parseDur(param("uptime"));
+  var startAt = new Date(W.t - (upMs || 0));
+  var endAt = leftMs != null ? W.t + leftMs : null;
+  var orig = safeUrl(param("orig", "dst", "link-orig"));
+  var statusUrl = safeUrl(param("status", "link-status"));
+  var logoutUrl = safeUrl(param("logout", "link-logout"));
 
-  function applyLang(lang){
-    currentLang=lang; T=I18N[lang]; document.documentElement.lang=lang;
-
-    $('#langTR').textContent=T.btnTR; $('#langEN').textContent=T.btnEN;
-    $('#langTR').setAttribute('aria-pressed', lang==='tr');
-    $('#langEN').setAttribute('aria-pressed', lang==='en');
-
-    $('#heroTitle').textContent=T.heroTitle; $('#heroSub').textContent=T.heroSub;
-    $('#hdWelcome').textContent=T.welcomeHd; $('#connectedTag').textContent=T.connected;
-
-    $('#tagRestaurant').textContent=T.tagRestaurant; $('#tagSupport').textContent=T.tagSupport;
-    $('#tagBreakfast').textContent=T.tagBreakfast; $('#tagNearby').textContent=T.tagNearby; $('#tagMuseum').textContent=T.tagMuseum;
-
-    $('#restTitle').textContent=T.restTitle; $('#restText').textContent=T.restText;
-    $('#waTitle').textContent=T.waTitle; $('#waText').textContent=T.waText;
-    $('#bfTitle').textContent=T.bfTitle; $('#bfText').textContent=T.bfText;
-    $('#museumTitle').textContent=T.museumTitle; $('#museumText').textContent=T.museumText;
-    $('#nearTitle').textContent=T.nearTitle; $('#nearText').textContent=T.nearText;
-
-    $('#sessionTitle').textContent=T.sessTitle; $('#sessionNote').textContent=T.sessNote;
-    $('#lblSSID').textContent=T.lblSSID; $('#lblStart').textContent=T.lblStart; $('#lblDuration').textContent=T.lblDuration; $('#lblIP').textContent=T.lblIP; $('#lblMAC').textContent=T.lblMAC;
-
-    $('#ssidTxt').textContent=ssid;
-    $('#ssidVal').textContent=ssid; $('#ipVal').textContent=ip; $('#macVal').textContent=mac;
-    $('#startVal').textContent = fmtDT(lang).format(startAt);
+  function fmtDT(lang) { return new Intl.DateTimeFormat(lang === "tr" ? "tr-TR" : "en-GB", { dateStyle: "medium", timeStyle: "short" }); }
+  function fmtDur(ms, T) {
+    var s = Math.max(0, Math.floor(ms / 1000));
+    var d = Math.floor(s / 86400); s %= 86400;
+    var h = Math.floor(s / 3600); s %= 3600;
+    var m = Math.floor(s / 60); s %= 60;
+    return (d ? d + " " + T.d + " " : "") + (h ? h + " " + T.h + " " : "") + (m ? m + " " + T.m + " " : "") + s + " " + T.s;
   }
 
-  applyLang(currentLang);
-  localStorage.setItem('wifi_lang_ik', currentLang);
+  function detectLang() {
+    var q = (params.get("lang") || "").toLowerCase();
+    if (q.indexOf("tr") === 0) return "tr";
+    if (q.indexOf("en") === 0) return "en";
+    try { var saved = localStorage.getItem("wifi_lang_ik"); if (saved === "tr" || saved === "en") return saved; } catch (e) {}
+    var langs = navigator.languages || [navigator.language || ""];
+    for (var i = 0; i < langs.length; i++) if ((langs[i] || "").toLowerCase().indexOf("tr") === 0) return "tr";
+    return "en";
+  }
+  var lang = detectLang(), T = I18N[lang];
 
-  setInterval(()=>{ document.querySelector('#durVal').textContent = fmtDur(Date.now()-startAt, currentLang); }, 1000);
+  function tick() {
+    $("#durVal").textContent = fmtDur(Date.now() - startAt.getTime(), T);
+    if (endAt) $("#leftVal").textContent = fmtDur(endAt - Date.now(), T);
+  }
 
-  document.querySelector('#langTR').addEventListener('click', ()=>{ applyLang('tr'); localStorage.setItem('wifi_lang_ik','tr'); });
-  document.querySelector('#langEN').addEventListener('click', ()=>{ applyLang('en'); localStorage.setItem('wifi_lang_ik','en'); });
+  function apply(l) {
+    lang = l; T = I18N[l];
+    document.documentElement.lang = l;
+    Array.prototype.forEach.call(document.querySelectorAll("[data-i18n]"), function (el) {
+      var k = el.getAttribute("data-i18n");
+      if (T[k] != null) el.textContent = T[k];
+    });
+    $("#langTR").setAttribute("aria-pressed", l === "tr");
+    $("#langEN").setAttribute("aria-pressed", l === "en");
+    $("#startVal").textContent = fmtDT(l).format(startAt);
+    tick();
+    try { localStorage.setItem("wifi_lang_ik", l); } catch (e) {}
+  }
+
+  $("#year").textContent = new Date().getFullYear();
+  $("#ssidTxt").textContent = ssid;
+  $("#ssidVal").textContent = ssid;
+  $("#ipVal").textContent = ip;
+  $("#macVal").textContent = mac;
+  if (user) { $("#userVal").textContent = user; $("#userRow").hidden = false; }
+  if (endAt) $("#leftRow").hidden = false;
+  if (orig && orig.hostname !== location.hostname) {
+    var c = $("#continueBtn");
+    c.href = orig.href; c.hidden = false;
+    $("#continueHost").textContent = orig.hostname.replace(/^www\./, "");
+  }
+  if (statusUrl) { $("#statusLink").href = statusUrl.href; $("#statusLink").hidden = false; }
+  if (logoutUrl) { $("#logoutLink").href = logoutUrl.href; $("#logoutLink").hidden = false; }
+  if (statusUrl || logoutUrl) $("#sessLinks").hidden = false;
+
+  apply(lang);
+  setInterval(tick, 1000);
+  // Tıklama ölçümü: GA4'e "wifi_click" olayı, yalnızca bağlantı adıyla (IP/MAC gibi kişisel veri yok)
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest && e.target.closest("[data-track]");
+    if (a && typeof window.gtag === "function") window.gtag("event", "wifi_click", { wifi_link: a.getAttribute("data-track"), wifi_lang: lang });
+  });
+  $("#langTR").addEventListener("click", function () { apply("tr"); });
+  $("#langEN").addEventListener("click", function () { apply("en"); });
+})();
 </script>
 </body>
 </html>
